@@ -10,6 +10,7 @@ access_secret = config.access_secret
 
 class MyStreamListener(tweepy.StreamListener):
     def on_status(self, status):
+        print(status)
         print(status.user.screen_name + ":" + status.text)
 
 
