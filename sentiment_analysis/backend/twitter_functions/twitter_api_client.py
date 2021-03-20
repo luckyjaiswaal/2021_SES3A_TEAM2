@@ -1,5 +1,4 @@
 import tweepy
-import config
 
 
 def generate_api_obj(consumer_key, consumer_secret, access_token, access_secret):
