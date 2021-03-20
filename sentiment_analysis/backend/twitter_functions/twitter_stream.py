@@ -27,7 +27,7 @@ class CompanyStreamListener(tweepy.StreamListener):
 
         self.kafka_producer.send('tweets-data', value=data)
         print('produced tweet: ', data)
-        # self.kafka_producer.flush()
+        self.kafka_producer.flush()
 
 
 def create_stream(api, kafka_producer, target_topic):
