@@ -2,3 +2,19 @@ Link for how to perform sentiment analysis in Python 3 using the Natural languag
 https://www.digitalocean.com/community/tutorials/how-to-perform-sentiment-analysis-in-python-3-using-the-natural-language-toolkit-nltk
 Yahoo Finance API 
 https://algotrading101.com/learn/yahoo-finance-api-guide/
+
+
+The study below made attempts to predict stock market prices etc using twitter stream data to be considered and score codes with an impression. They use a data processing architecture known as Lambda architeture which is an open source, fault tolerant model that can be scaled up based on requirement with a promise of lower latency and robustness. Data is ingested via the twitter API and then stored in HDFS with help of Apache Flume where the twitter API is the source and HDFS is the sink. In the study, they use the Yahoo Finance website as a ground for truth of performance measure. The dataset is twitter data starting from May 2005 until June of 2017 and was stored in HDFS and figures are produced that compare actual and predicted stock price. While this study uses RNN, other studies have been conducted using RNN-LSTM. A hybrid model may be introduced to improve reliability or trust-worthiness. It is possible to use RNN-BLSTM as I have seen other studies showing that by using previous values as a factor, it is able to perform slightly more accurately. 
+
+Sushree Das, Ranjan Kumar Behera, Mukesh kumar, Santanu Kumar Rath,
+Real-Time Sentiment Analysis of Twitter Streaming data for Stock Prediction,
+Procedia Computer Science,
+Volume 132,
+2018,
+Pages 956-964,
+ISSN 1877-0509,
+https://doi.org/10.1016/j.procs.2018.05.111.
+(https://www.sciencedirect.com/science/article/pii/S1877050918308433)
+
+
+Tweepy info: https://www.researchgate.net/post/How-can-I-collect-data-from-Twitter-for-stock-market-analysis-sentiment-analysis
