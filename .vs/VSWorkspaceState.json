@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\sentiment_analysis",
+    "\\sentiment_analysis\\frontend",
+    "\\sentiment_analysis\\frontend\\static\\frontend",
+    "\\sentiment_analysis\\frontend\\templates",
+    "\\sentiment_analysis\\frontend\\templates\\frontend",
+    "\\sentiment_analysis\\sentiment_analysis"
+  ],
+  "SelectedNode": "\\sentiment_analysis\\frontend\\templates\\frontend\\dashboard.html",
+  "PreviewInSolutionExplorer": false
+}
