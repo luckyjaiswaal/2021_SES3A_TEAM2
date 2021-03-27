@@ -25,7 +25,19 @@
     left: 50px;
 }
 
+.bar{
+    width: 300px;
+    background: #eee;
+}
 
+.title{
+    width: 300px;
+    font-size: 40px;
+}
+
+.flex{
+    display: flex;
+}
 
 
 

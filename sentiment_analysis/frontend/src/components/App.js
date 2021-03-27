@@ -14,8 +14,12 @@ class App extends Component {
 
   render() {
     return(
-      <div>
-        <Layout style={{ height: 700 }}>
+      <div className="flex">
+        <div>
+        <div className="bar">
+          <div className="title">sentX</div>
+        </div>
+        <Layout style={{ height: 600 }}>
           <Sider width={300} style={{backgroundColor:'#eee'}}>
             <Content style={{ height: 200 }}>
                 <UserProfile name={'tom'}/>
@@ -23,17 +27,17 @@ class App extends Component {
             <Content style={{ height: 200 }}>
                 <InvestAndMarket marketreturn={11111} invest={1111}/>          
             </Content>
-            <Content style={{ height: 300 }}>
+            <Content style={{ height: 250 }}>
                 <div className="status" >Market Status:CLOSED</div>         
             </Content>
           </Sider>
-          {/* <Layout>
-            <Content style={{ height: 300 }}>
-              <UserProfile name={'tom'}/>
-            </Content>
-          </Layout> */}
         </Layout>
-      
+        </div>
+        <div>
+          <div>
+            <PieChartView />
+          </div>
+        </div>
       </div>
     )
   }

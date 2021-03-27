@@ -6,7 +6,6 @@ export default class PieChartView extends Component {
     render() {
         return (
             <div id='view2' className='pane'>
-                <div className='header'>Gender</div>
                 <PieChart />
             </div>
         )
