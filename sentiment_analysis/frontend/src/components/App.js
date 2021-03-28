@@ -37,6 +37,9 @@ class App extends Component {
           <div>
             <PieChartView />
           </div>
+          <div>
+            <h1>NEWSFEED</h1>
+          </div>
         </div>
       </div>
     )
