@@ -5,6 +5,7 @@ import UserProfile from './userProfile/index';
 import {Layout} from 'antd'
 import PieChartView from '../components/pieChartView/index'
 import InvestAndMarket from '../components/investandmarket/index'
+import TwitterFeedScroll from "./TwitterFeedScroll";
 
 const { Sider, Content, Footer } = Layout;
 class App extends Component {
@@ -41,6 +42,8 @@ class App extends Component {
             <h1>NEWSFEED</h1>
           </div>
         </div>
+        <TwitterFeedScroll/>
+
       </div>
     )
   }
