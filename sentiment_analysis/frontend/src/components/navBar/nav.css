@@ -14,18 +14,17 @@
 
 .wrapper .nav {
     z-index: 1;
-    height: 100px;
+    height: 120px;
     padding: 0;
     width: 100%;
     color:#c4c4c4;
-    position: absolute;
+    /* position: absolute; */
     top: 0; left: 0; right: 0;
 }
 
 .btn {
     height: 80px;
-    width: 300px;
-    font-size: 30px;
+    width: 250px;
 }
 
 .logo {
