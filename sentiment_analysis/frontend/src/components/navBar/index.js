@@ -8,7 +8,7 @@ export default class NavBar extends Component {
         return (
         <div className="nav">
           <Box display="flex" bgcolor="grey.200" p={2} alignItems="center">
-            <Typography>SentX</Typography>
+            <Box fontSize="55px" className="logo">Sent<Box display="inline" fontSize="75px">X</Box></Box>
             <Box>
               <Button color="primary">Dashboard</Button>
               <Button color="primary">Watchlist</Button>
