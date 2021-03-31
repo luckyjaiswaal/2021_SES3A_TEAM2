@@ -1,10 +1,31 @@
-.nav {
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    position: sticky;
+}
+
+.wrapper{
+    display: flex;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
+.wrapper .nav {
     z-index: 1;
-    height: 300px;
+    height: 100px;
+    padding: 0;
     width: 100%;
     color:#c4c4c4;
-    position: fixed;
+    position: absolute;
     top: 0; left: 0; right: 0;
+}
+
+.btn {
+    height: 80px;
+    width: 300px;
+    font-size: 30px;
 }
 
 .logo {

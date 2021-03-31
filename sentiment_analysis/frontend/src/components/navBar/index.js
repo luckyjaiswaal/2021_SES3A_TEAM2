@@ -10,9 +10,9 @@ export default class NavBar extends Component {
           <Box display="flex" bgcolor="grey.200" p={2} alignItems="center">
             <Box fontSize="55px" className="logo">Sent<Box display="inline" fontSize="75px">X</Box></Box>
             <Box>
-              <Button color="primary">Dashboard</Button>
-              <Button color="primary">Watchlist</Button>
-              <Button color="primary">Profile</Button>
+              <Button className="btn" color="primary">Dashboard</Button>
+              <Button className="btn" color="primary">Watchlist</Button>
+              <Button className="btn" color="primary">Profile</Button>
             </Box>
           </Box>
         </div>

@@ -15,35 +15,36 @@ class App extends Component {
 
   render() {
     return(
-
-      <div>
+      <>
         <NavBar/>
-        <div className="flex">
-          <div>
-            <div className="bar">
-              <div className="title"></div>
-          </div>
-          <Layout style={{ height: 600 }}>
-            <Sider width={300} style={{backgroundColor:'#eee'}}>
-              <Content style={{ height: 200 }}>
-                  <UserProfile name={'tom'}/>
-              </Content>
-              <Content style={{ height: 200 }}>
-                  <InvestAndMarket marketreturn={11111} invest={1111}/>          
-              </Content>
-              <Content style={{ height: 250 }}>
-                  <div className="status" >Market Status:CLOSED</div>         
-              </Content>
-            </Sider>
-          </Layout>
-          </div>
-          <div>
+        <div>
+          <div className="flex">
             <div>
-              <PieChartView />
+              <div className="bar">
+                <div className="title"></div>
+            </div>
+            <Layout style={{ height: 600 }}>
+              <Sider width={300} style={{backgroundColor:'#eee'}}>
+                <Content style={{ height: 200 }}>
+                    <UserProfile name={'tom'}/>
+                </Content>
+                <Content style={{ height: 200 }}>
+                    <InvestAndMarket marketreturn={11111} invest={1111}/>          
+                </Content>
+                <Content style={{ height: 250 }}>
+                    <div className="status" >Market Status:CLOSED</div>         
+                </Content>
+              </Sider>
+            </Layout>
+            </div>
+            <div>
+              <div>
+                <PieChartView />
+              </div>
             </div>
           </div>
-        </div>
-      </div>      
+        </div> 
+      </>     
     )
   }
 }
