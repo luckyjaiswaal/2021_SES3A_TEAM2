@@ -1,0 +1,7 @@
+.nav {
+    display: block;
+    height: 10px; 
+    position: sticky;
+    width: 100%;
+    top: 0;
+}

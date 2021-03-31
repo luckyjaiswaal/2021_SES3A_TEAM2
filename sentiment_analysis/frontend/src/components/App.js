@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import './dashboard.css';
 import UserProfile from './userProfile/index';
 import {Layout} from 'antd'
+import NavBar from '../components/navBar/index'
 import PieChartView from '../components/pieChartView/index'
 import InvestAndMarket from '../components/investandmarket/index'
 
@@ -14,10 +15,13 @@ class App extends Component {
 
   render() {
     return(
+      
+ 
       <div className="flex">
+        <NavBar/>
         <div>
-        <div className="bar">
-          <div className="title">sentX</div>
+          <div className="bar">
+            <div className="title"></div>
         </div>
         <Layout style={{ height: 600 }}>
           <Sider width={300} style={{backgroundColor:'#eee'}}>
