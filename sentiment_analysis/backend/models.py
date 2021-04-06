@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 
 class Company(models.Model):
@@ -8,3 +9,4 @@ class Company(models.Model):
     latest_stock_price = models.FloatField()
     daily_sentiment_trend = models.FloatField()
     daily_stock_trend = models.FloatField()
+

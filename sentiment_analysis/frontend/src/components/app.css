@@ -41,6 +41,8 @@
 
 }
 .btn{
+  color: black;
+  text-align: center;
   background-color: gray;
   cursor: pointer;
   padding: 10px;
