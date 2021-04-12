@@ -46,7 +46,7 @@
     text-align: middle;
     border: none;
     outline: none;
-    font-size: 20px;
+    font-size: 25px !important;
     transition: 0.4s;
 }
 

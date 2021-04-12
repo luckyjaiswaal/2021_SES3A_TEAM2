@@ -12,26 +12,12 @@ import { Accordion, Grid, withStyles } from "@material-ui/core";
 
 const { Sider, Content, Footer } = Layout;
 
-const styles = (theme) => ({
-  root: {
-    width: "100%"
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular
-  }
-});
-
 const AccordionSummary = withStyles({
-  root: {
-    flexDirection: "column"
-  },
   content: {
-    marginBottom: 0
+    flexGrow: 0
   },
-  expandIcon: {
-    marginRight: 0,
-    paddingTop: 0
+  details: {
+    flexDirection: "column"
   }
 })(MuiAccordionSummary);
 
@@ -90,16 +76,15 @@ class App extends Component {
                     
                   </AccordionSummary>
                   <AccordionDetails>
-                    {item.content}
+                    <div>
+                      <PieChartView />
+                    </div>
                   </AccordionDetails>
                 </Accordion>
                 ))}
             </Grid>
           </div>
           <div>
-            <div>
-              {/* <PieChartView /> */}
-            </div>
           </div>
             {/* <TwitterFeedScroll/> */}
         </div>
