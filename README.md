@@ -1,3 +1,13 @@
 # SentimentAnalysis
 
 The purpose of this project is to create a sentiment analyser that can calculate the sentiment of a specific stock on social media, which can be potentially used to make trading decisions. The main objective of this project is to have a dashboard displaying the sentiment trend of the stocks along with the stock’s actual trading prices.
+
+
+Necessary Libraries to install while setting up environment (libraries installed using pip/pip3):
+syntax "pip install 'package-name'"
+
+kafka
+kafka-python
+django
+tweepy
+djangorestframework
