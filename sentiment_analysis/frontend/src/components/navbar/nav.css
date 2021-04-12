@@ -1,0 +1,44 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    position: sticky;
+}
+
+.wrapper{
+    display: flex;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
+.wrapper .nav {
+    z-index: 1;
+    height: 120px;
+    padding: 0;
+    width: 100%;
+    color:#c4c4c4;
+    /* position: absolute; */
+    top: 0; left: 0; right: 0;
+}
+
+.btn {
+    height: 80px;
+    width: 250px;
+}
+
+.logo {
+    display: fixed;
+    font-family: "Helvetica";
+    font-style: normal;
+    font-weight: bold;
+    padding-right: 30px;
+    color: white;
+    letter-spacing: 0.05em;
+    text-shadow: 0px 4px 4px 
+    rgba(0, 0, 0, 0.25);
+}
+
+.x {
+ font-size: 64px;
+}
