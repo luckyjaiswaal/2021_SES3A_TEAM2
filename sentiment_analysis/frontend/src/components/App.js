@@ -1,66 +1,107 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import './dashboard.css';
-import UserProfile from './userProfile/index';
 import NavBar from '../components/navbar/index';
 import {Layout, Typography} from 'antd'
 import PieChartView from '../components/pieChartView/index'
-import InvestAndMarket from '../components/investandmarket/index'
-import AccordionSummary from "@material-ui/core/AccordionSummary"
+import MuiAccordionSummary from "@material-ui/core/AccordionSummary"
 import AccordionDetails from "@material-ui/core/AccordionDetails"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import TwitterFeedScroll from "./TwitterFeedScroll";
-import { Accordion, Grid } from "@material-ui/core";
+import { Accordion, Grid, withStyles } from "@material-ui/core";
 
 const { Sider, Content, Footer } = Layout;
+
+const styles = (theme) => ({
+  root: {
+    width: "100%"
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular
+  }
+});
+
+const AccordionSummary = withStyles({
+  root: {
+    flexDirection: "column"
+  },
+  content: {
+    marginBottom: 0
+  },
+  expandIcon: {
+    marginRight: 0,
+    paddingTop: 0
+  }
+})(MuiAccordionSummary);
+
+const accordionData = [
+  {
+    id: 1,
+    name: "Tesla - TSLA",
+    price: "Price - $420 ↑ $50",
+    sentimentscore: "Sentiment - 76/100 [--------|||||]",
+    content: "Insert Graphs Here"
+  },
+  {
+    id: 2,
+    name: "Google - GOOGL",
+    price: "Price - $660 ↓ $20",
+    sentimentscore: "Sentiment - 50/100 [------|||||||]",
+    content: "Insert Graphs Here"
+  },
+  {
+    id: 3,
+    name: "Facebook - FB",
+    price: "Price - $540 ↓ $80",
+    sentimentscore: "Sentiment - 23/100 [---||||||||||]",
+    content: "Insert Graphs Here"
+  }
+];
+
 class App extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      company: [],
+    };
   }
 
-  render() {
+  render() { 
     return(
       <>
         <NavBar></NavBar>
         <div className="flex">
-          <div>
-          <Grid>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon/>}
-                aria-controls="panel1a=content"
-                id="panel1a-header"
-              >
-                <Typography> Tesla $TSLA
-                  Price - $420 ^ $50
-                  Sentiment 76/100 [--------|||||]
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                Bruhh
-              </AccordionDetails>
-            </Accordion>
-          </Grid>
-          {/* <Layout style={{ height: 600 }}>
-            <Sider width={300} style={{backgroundColor:'#eee'}}>
-              <Content style={{ height: 200 }}>
-                  <UserProfile name={'tom'}/>
-              </Content>
-              <Content style={{ height: 200 }}>
-                  <InvestAndMarket marketreturn={11111} invest={1111}/>          
-              </Content>
-              <Content style={{ height: 250 }}>
-                  <div className="status" >Market Status: CLOSED</div>         
-              </Content>
-            </Sider>
-          </Layout> */}
+          <div className="accordion">
+            <Grid>
+              {accordionData.map((item, index) => (
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon/>}
+                    aria-controls="panel1a=content"
+                    id="panel1a-header"
+                  >
+                    <Typography>{item.name}</Typography>
+                    <br/>
+                    <Typography>{item.price}</Typography>
+                    <br/>
+                    <Typography>{item.sentimentscore}</Typography>  
+                    
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    {item.content}
+                  </AccordionDetails>
+                </Accordion>
+                ))}
+            </Grid>
           </div>
           <div>
             <div>
-              <PieChartView />
+              {/* <PieChartView /> */}
             </div>
           </div>
-            <TwitterFeedScroll/>
+            {/* <TwitterFeedScroll/> */}
         </div>
       </>
     )
