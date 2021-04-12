@@ -28,6 +28,10 @@ npm install
 
 # Development
 
+## Git Flow
+We will use the Gitflow Workflow to keep our repository tidy. Here is a link on how to use it:
+https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+
 ## Create a branch
 We use a standardised format for branch creation for bugs and features. 
 We use lowercase, kebab case, with a prefix for the type of work.
