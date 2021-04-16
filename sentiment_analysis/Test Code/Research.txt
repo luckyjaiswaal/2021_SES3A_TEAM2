@@ -5,3 +5,13 @@ Testing the Natural Language Toolkit (NLTK)
 Sample tweets have been downloaded using NLTK
 
 Now testing to tokenize the data
+
+_____________________________
+
+Update 16/4/21
+
+Data has been tokenized
+
+Data has been normalized
+
+Data has been processed for noise removal
