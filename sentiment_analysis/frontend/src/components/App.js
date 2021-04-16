@@ -8,7 +8,7 @@ import MuiAccordionSummary from "@material-ui/core/AccordionSummary"
 import AccordionDetails from "@material-ui/core/AccordionDetails"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import TwitterFeedScroll from "./TwitterFeedScroll";
-import { Accordion, Grid, withStyles } from "@material-ui/core";
+import { Accordion, Button, Grid, withStyles } from "@material-ui/core";
 
 const { Sider, Content, Footer } = Layout;
 
@@ -24,23 +24,23 @@ const AccordionSummary = withStyles({
 const accordionData = [
   {
     id: 1,
-    name: "Tesla - TSLA",
+    name: "Tesla - TSLA ",
     price: "Price - $420 ↑ $50",
-    sentimentscore: "Sentiment - 76/100 [--------|||||]",
+    sentimentscore: " Sentiment - 76/100 [--------|||||]",
     content: "Insert Graphs Here"
   },
   {
     id: 2,
-    name: "Google - GOOGL",
+    name: "Google - GOOGL ",
     price: "Price - $660 ↓ $20",
-    sentimentscore: "Sentiment - 50/100 [------|||||||]",
+    sentimentscore: " Sentiment - 50/100 [------|||||||]",
     content: "Insert Graphs Here"
   },
   {
     id: 3,
-    name: "Facebook - FB",
+    name: "Facebook - FB ",
     price: "Price - $540 ↓ $80",
-    sentimentscore: "Sentiment - 23/100 [---||||||||||]",
+    sentimentscore: " Sentiment - 23/100 [---||||||||||]",
     content: "Insert Graphs Here"
   }
 ];
@@ -68,16 +68,37 @@ class App extends Component {
                     aria-controls="panel1a=content"
                     id="panel1a-header"
                   >
-                    <Typography>{item.name}</Typography>
+                    <Typography> {item.name} </Typography>
                     <br/>
-                    <Typography>{item.price}</Typography>
+                    <Typography> {item.price} </Typography>
                     <br/>
-                    <Typography>{item.sentimentscore}</Typography>  
+                    <Typography> {item.sentimentscore} </Typography>  
                     
                   </AccordionSummary>
                   <AccordionDetails>
-                    <div>
+                    <div className="details">
+                    <Grid
+                      container
+                      direction="row"
+                      justify="center"
+                      alignItems="center"
+                      item xs={30} 
+                      spacing={4}
+                    >
                       <PieChartView />
+                      &nbsp;
+                      &nbsp;
+                      &nbsp;
+                      <TwitterFeedScroll/>
+                      &nbsp;
+                      &nbsp;
+                      &nbsp;
+                        <Button variant="contained" color="primary"> More Info </Button>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        <Button variant="contained" color="primary"> Add to Watchlist </Button>
+                      </Grid>
                     </div>
                   </AccordionDetails>
                 </Accordion>
@@ -86,7 +107,6 @@ class App extends Component {
           </div>
           <div>
           </div>
-            {/* <TwitterFeedScroll/> */}
         </div>
       </>
     )

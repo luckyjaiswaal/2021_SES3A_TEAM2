@@ -39,6 +39,11 @@
     display: flex;
 }
 
+.details{
+    display: flex;
+    padding: 30px;
+}
+
 .accordion{
     cursor: pointer;
     padding: 10px;
