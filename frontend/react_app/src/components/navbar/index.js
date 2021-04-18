@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import './nav.css';
-import { Box, Button} from "@material-ui/core";
+import { Box, Button, InputBase } from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
 
 const NavButton = withStyles({
     root: {
@@ -54,6 +55,15 @@ const NavButton = withStyles({
                         <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px', color: 'black'}}>Profile</NavButton>
                         <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px', color: 'black'}}>Logout</NavButton>
                     </Box>
+                    &nbsp;
+                    <SearchIcon/>
+                    &nbsp;&nbsp;&nbsp;
+                    <div>
+                      <InputBase 
+                      className="input"
+                      placeholder="Search for stocks" 
+                      />
+                    </div>
                 </Box>
             </div>
         </div>
