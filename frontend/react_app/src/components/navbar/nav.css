@@ -25,7 +25,10 @@
 .btn {
     height: 80px;
     width: 250px;
-    margin: theme.spacing(1);
+}
+
+.input{
+    width: 300px;
 }
 
 .logo {
