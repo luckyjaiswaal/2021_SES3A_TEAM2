@@ -60,6 +60,8 @@ const NavButton = withStyles({
                     &nbsp;&nbsp;&nbsp;
                     <div>
                       <InputBase 
+                      align='right'
+                      textAlign='right'
                       className="input"
                       placeholder="Search for stocks" 
                       />
