@@ -49,7 +49,7 @@ const NavButton = withStyles({
             <div className="nav">
                 <Box display="flex" bgcolor="grey.200" p={2} alignItems="center">
                 <Box fontSize="55px" className="logo">Sent<Box display="inline" fontSize="75px">X</Box></Box>
-                    <Box>
+                    <Box className="box">
                         <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px', color: 'black'}}>Dashboard</NavButton>
                         <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px', color: 'black'}}>Watchlist</NavButton>
                         <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px', color: 'black'}}>Profile</NavButton>
