@@ -10,6 +10,7 @@ const NavButton = withStyles({
       textTransform: 'none',
       fontSize: 16,
       padding: '6px 12px',
+      color: 'white',
     //   border: '1px solid',
       lineHeight: 1.5,
     //   backgroundColor: '#0063cc',
@@ -47,13 +48,13 @@ const NavButton = withStyles({
           return (
         <div className="wrapper">
             <div className="nav">
-                <Box display="flex" bgcolor="grey.200" p={2} alignItems="center">
+                <Box display="flex" bgcolor="#8D8C8A" p={2} alignItems="center">
                 <Box fontSize="55px" className="logo">Sent<Box display="inline" fontSize="75px">X</Box></Box>
                     <Box className="box">
-                        <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px', color: 'black'}}>Dashboard</NavButton>
-                        <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px', color: 'black'}}>Watchlist</NavButton>
-                        <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px', color: 'black'}}>Profile</NavButton>
-                        <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px', color: 'black'}}>Logout</NavButton>
+                        <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px'}}>Dashboard</NavButton>
+                        <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px'}}>Watchlist</NavButton>
+                        <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px'}}>Profile</NavButton>
+                        <NavButton className="btn" disableRipple style={{fontFamily: 'Verdana', fontSize: '21px'}}>Logout</NavButton>
                     </Box>
                     &nbsp;
                     <SearchIcon/>
