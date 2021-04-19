@@ -50,7 +50,7 @@ export default class NavBar extends Component {
       <div className="wrapper">
         <div className="nav">
           <Box display="flex" bgcolor="#8D8C8A" p={2} alignItems="center">
-            <Link to="/">
+            <Link to="/" style={{ textDecoration: 'none' }}>
               <Box fontSize="55px" className="logo">Sent<Box display="inline" fontSize="75px">X</Box></Box>
             </Link>
             <Box className="box">

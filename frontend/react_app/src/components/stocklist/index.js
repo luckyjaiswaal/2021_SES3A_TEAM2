@@ -53,7 +53,7 @@ import { Link } from 'react-router-dom';
                       {row.score}
                     </TableCell>
                     <TableCell align="right">
-                    <Link to={`stock/${row.symbol}`}>More info</Link>
+                    <Link to={`stock/${row.symbol}`} style={{ textDecoration: 'none' }}>More info</Link>
                     </TableCell>
                   </TableRow>
                 ))}
