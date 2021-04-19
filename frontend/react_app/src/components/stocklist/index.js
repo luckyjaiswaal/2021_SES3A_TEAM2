@@ -1,6 +1,15 @@
 import './stocklist.css';
 import React, { Component } from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from "@material-ui/core";
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
+import { Link } from 'react-router-dom';
+
+// const useStyles = makeStyles({
+//     table: {
+//       minWidth: 650,
+//     },
+//   });
   
   function createData(stock, symbol, price, score) {
     return {stock, symbol, price, score};
@@ -14,7 +23,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
   ];
 
 
-  export default class StockList extends Component {
+  export default class Dashboard extends Component {
       render() {
           return (
             <TableContainer component={Paper} className="tablecontainer" style={{width:1200}}> 
@@ -44,7 +53,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
                       {row.score}
                     </TableCell>
                     <TableCell align="right">
-                    <Button>More Info</Button>
+                    <Link to={`stock/${row.symbol}`} style={{ textDecoration: 'none' }}>More info</Link>
                     </TableCell>
                   </TableRow>
                 ))}
