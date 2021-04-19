@@ -1,0 +1,84 @@
+
+  *{
+    
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .container{
+    padding-top: 50px;
+    height: 100vh;
+    width: 100%;
+  }
+  form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  h1{
+    margin: 4px;
+ 
+    text-align: center;
+  }
+   h5{
+    margin: 6px;
+    border-bottom: 2px solid black;
+    text-align: center;
+  }
+  .register-form{
+    display: block;
+    margin: auto;
+    width: fit-content;
+    border: 12px solid grey;
+    padding: 40px;
+    margin-top: 20px;
+    background:grey ;
+    border-radius: 50px;
+  }
+.names{
+  display: flex;
+  flex-direction: column;
+
+}
+.btn{
+  color: black;
+  text-align: center;
+  background-color: gray;
+  cursor: pointer;
+  padding: 10px;
+    width: 150px;    
+    display: block;
+    margin: auto;
+    border: 2px solid white;
+    font-size: 19px;
+    margin-top: 5px;
+}
+.btns{
+  text-decoration: none;
+  font-size: 20px;
+  padding-top: 3px;
+  font-weight: 600;
+  color: white;
+}
+::placeholder{
+color: black;
+opacity: 0.6;
+} 
+
+  .logo{
+    font-size: 30px;
+    font-weight: 900;
+    color:grey;
+  }
+  .register-form input{
+    color: black;
+    font-size: 20px;
+    outline: none;
+    margin: 10px;
+    padding:10px;
+    
+  }
+  .middle{
+    margin: 10px 0;
+    text-align: center;
+  }

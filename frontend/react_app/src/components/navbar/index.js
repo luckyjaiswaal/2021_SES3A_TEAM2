@@ -57,7 +57,8 @@ export default class NavBar extends Component {
               <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Dashboard</NavButton>
               <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Watchlist</NavButton>
               <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Profile</NavButton>
-              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Logout</NavButton>
+              {/* <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Logout</NavButton> */}
+              <Link to="/login" className="btns">Logout</Link>
             </Box>
                     &nbsp;
                     <SearchIcon />
