@@ -1,0 +1,11 @@
+.newsfeed{
+    margin: 10px;
+    height: 100px;
+    display: flex;
+    overflow-y: scroll;
+    align-items: center;
+}
+
+.table{
+    
+}
