@@ -17,7 +17,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
   export default class StockList extends Component {
       render() {
           return (
-            <TableContainer component={Paper} className="tablecontainer" style={{width:650}}> 
+            <TableContainer component={Paper} className="tablecontainer" style={{width:1200}}> 
             <Table className="table" aria-label="simple table" style={{ minWidth: 650}}>
               <TableHead className="head">
                 <TableRow style={{backgroundColor:'#363538'}}>

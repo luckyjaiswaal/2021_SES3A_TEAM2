@@ -1,9 +1,15 @@
 .newsfeed{
     margin: 10px;
-    height: 100px;
+    /* height: 60px; */
+    min-height: 100px;
     display: flex;
     overflow-y: scroll;
     align-items: center;
+}
+
+.tablecontainer{
+    padding: auto;
+    margin: auto;
 }
 
 .table{
