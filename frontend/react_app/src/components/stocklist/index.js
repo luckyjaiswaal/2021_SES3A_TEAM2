@@ -1,14 +1,6 @@
 import './stocklist.css';
 import React, { Component } from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from "@material-ui/core";
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
-
-// const useStyles = makeStyles({
-//     table: {
-//       minWidth: 650,
-//     },
-//   });
   
   function createData(stock, symbol, price, score) {
     return {stock, symbol, price, score};
@@ -25,15 +17,15 @@ import SearchIcon from '@material-ui/icons/Search';
   export default class StockList extends Component {
       render() {
           return (
-            <TableContainer component={Paper}>
-            <Table className="table" aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Stock</TableCell>
-                  <TableCell>Symbol</TableCell>
-                  <TableCell>Price</TableCell>
-                  <TableCell>Sentiment Score</TableCell>
-                  <TableCell align="right">Action</TableCell> 
+            <TableContainer component={Paper} className="tablecontainer" style={{width:650}}> 
+            <Table className="table" aria-label="simple table" style={{ minWidth: 650}}>
+              <TableHead className="head">
+                <TableRow style={{backgroundColor:'#363538'}}>
+                  <TableCell style={{color: '#F6F6F6'}}>Stock</TableCell>
+                  <TableCell style={{color: '#F6F6F6'}}>Symbol</TableCell>
+                  <TableCell style={{color: '#F6F6F6'}}>Price</TableCell>
+                  <TableCell style={{color: '#F6F6F6'}}>Sentiment Score</TableCell>
+                  <TableCell align="right" style={{color: '#F6F6F6'}}>Action</TableCell> 
                 </TableRow>
               </TableHead>
               <TableBody>
