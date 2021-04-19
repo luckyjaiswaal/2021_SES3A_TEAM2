@@ -29,10 +29,10 @@ import SearchIcon from '@material-ui/icons/Search';
             <Table className="table" aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell>Stock</TableCell>
-                  <TableCell>Symbol</TableCell>
-                  <TableCell>Price</TableCell>
-                  <TableCell>Sentiment Score</TableCell>
+                  <TableCell >Stock</TableCell>
+                  <TableCell >Symbol</TableCell>
+                  <TableCell >Price</TableCell>
+                  <TableCell >Sentiment Score</TableCell>
                   <TableCell align="right">Action</TableCell> 
                 </TableRow>
               </TableHead>
