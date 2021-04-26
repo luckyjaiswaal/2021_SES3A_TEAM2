@@ -6,6 +6,8 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Indepth from './InDepth';
 import Login from './Login'
 import SignUp from './SignUp'
+import Watchlist from './Watchlist'
+
 function App() {
   return (
     <>
@@ -18,8 +20,9 @@ function App() {
           <Route path="/signup" exact component={SignUp} /> 
           <Route path="/stock/:stockSymbol" exact component={Indepth} /> 
           <Route path="/stock" exact>
+          <Route path="/watchlist" exact component={Watchlist} /> 
           <h1>Please select a stock</h1>
-          </Route> 
+          </Route>  
         </Switch>
         <button onClick={axiostest}>testaxios</button>
       </div>
