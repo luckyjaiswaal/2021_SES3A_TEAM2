@@ -1,22 +1,25 @@
 import './form.css';
 import React, { Component } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from "@material-ui/core";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField} from "@material-ui/core";
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
 import { Link, Redirect } from 'react-router-dom';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
-function createData(stock, symbol, price, score) {
-  return {stock, symbol, price, score};
+// const handleChange = (event) => {
+//   setState({ ...state, [event.target.name]: event.target.checked });
+// };
+
+function createData(stock, symbol, price, score, week) {
+  return {stock, symbol, price, score, week};
 }
 
 const rows = [
-  createData('Tesla', 'TSLA', '$420 ↑ 50', '69/100'),
-  createData('Google', 'GOOGL', '$330 ↓ 30', '40/100'),
-  createData('Amazon', 'AMZN', '$563 ↑ 40', '55/100'),
-  createData('Facebook', 'FB', '$450 ↑ 10', '77/100'),
+  createData('Tesla', '$420 ↑ 50 5', '69/100', '640/230', '700/205'),
+  createData('Google', '$330 ↓ 30 10', '40/100', '640/230','700/205'),
+  createData('Amazon', '$563 ↑ 40 10', '55/100', '640/230', '700/205'),
+  createData('Facebook', '$450 ↑ 10 10', '77/100', '640/230','700/205'),
 ];
-
-
 
 export class Watchlist extends Component {
 
@@ -26,11 +29,12 @@ export class Watchlist extends Component {
             <Table className="table" aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell >Stock</TableCell>
-                  <TableCell >Symbol</TableCell>
-                  <TableCell >Price</TableCell>
-                  <TableCell >Sentiment Score</TableCell>
-                  <TableCell align="right">Action</TableCell> 
+                  <TableCell>Company</TableCell>
+                  <TableCell>Current Price Change %</TableCell>
+                  <TableCell>Sentiment Score</TableCell>
+                  <TableCell>Intraday High / Low</TableCell>
+                  <TableCell>52 Week High / Low</TableCell> 
+                  <TableCell>Set Buy Alert</TableCell> 
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -48,9 +52,25 @@ export class Watchlist extends Component {
                     <TableCell component="th" scope="row">
                       {row.score}
                     </TableCell>
-                    <TableCell align="right">
-                    <Link to={`stock/${row.symbol}`} style={{ textDecoration: 'none' }}>More info</Link>
+                    <TableCell component="th" scope="row">
+                      {row.week}
                     </TableCell>
+                    <TableCell component="th" scope="row">
+                      <TextField id="outlined-basic" label="Set Price" variant="outlined" />
+                      <br/>
+                      <FormControlLabel
+                        value="sms"
+                        control={<Checkbox color="primary" />}
+                        label="SMS"
+                        labelPlacement="end"
+                      />
+                      <FormControlLabel
+                        value="email"
+                        control={<Checkbox color="primary" />}
+                        label="E-mail"
+                        labelPlacement="end"
+                      />
+                      </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

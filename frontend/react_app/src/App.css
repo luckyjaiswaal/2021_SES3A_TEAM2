@@ -15,7 +15,8 @@
 
 .content {
   display: flex;
-  flex-direction: column;
+  position: relative;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
