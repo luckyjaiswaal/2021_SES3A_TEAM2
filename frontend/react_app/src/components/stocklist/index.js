@@ -26,15 +26,15 @@ import { Link } from 'react-router-dom';
   export default class Dashboard extends Component {
       render() {
           return (
-            <TableContainer component={Paper}>
-            <Table className="table" aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell >Stock</TableCell>
-                  <TableCell >Symbol</TableCell>
-                  <TableCell >Price</TableCell>
-                  <TableCell >Sentiment Score</TableCell>
-                  <TableCell align="right">Action</TableCell> 
+            <TableContainer component={Paper} className="tablecontainer" style={{width:1200}}> 
+            <Table className="table" aria-label="simple table" style={{ minWidth: 650}}>
+              <TableHead className="head">
+                <TableRow style={{backgroundColor:'#363538'}}>
+                  <TableCell style={{color: '#F6F6F6'}}>Stock</TableCell>
+                  <TableCell style={{color: '#F6F6F6'}}>Symbol</TableCell>
+                  <TableCell style={{color: '#F6F6F6'}}>Price</TableCell>
+                  <TableCell style={{color: '#F6F6F6'}}>Sentiment Score</TableCell>
+                  <TableCell align="right" style={{color: '#F6F6F6'}}>Action</TableCell> 
                 </TableRow>
               </TableHead>
               <TableBody>
