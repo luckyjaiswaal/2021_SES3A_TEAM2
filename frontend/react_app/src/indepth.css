@@ -1,0 +1,47 @@
+.top{
+    display: flex;
+    justify-content: space-around;
+}
+.section{
+    margin-left: 200px;
+    display: flex;
+}
+.chart{
+    display: flex;
+    flex-direction: column;
+}
+.indepth{
+    height: auto;
+}
+.searchArea input{
+    margin: 10px 25px;
+    font-size: 20px;
+    width: 700px;
+    border: none;
+    outline: none;
+    
+    border-bottom: 2px solid black;
+    padding: 10px;
+    color: gray;
+}
+.btn{
+    margin: 10px 25px;
+    margin-left: -200px;
+    background: black;
+    color: white;
+    font-size: 20px;
+    outline: none;
+    border: 2px solid black;
+    width: 500px;
+ 
+
+}
+.time, .sentiment, .pie{
+    margin: 10px;
+    border: 2px solid black;
+    min-width: 50%;
+    min-height: 300px;
+}
+.sentiment, .pie{
+    width: 550px;
+}

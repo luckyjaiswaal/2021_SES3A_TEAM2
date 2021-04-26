@@ -6,25 +6,30 @@ import axios from './components/utils/axios';
 import {Grid} from "@material-ui/core";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Indepth from './InDepth';
+import Login from './Login'
+import SignUp from './SignUp'
+import Watchlist from './Watchlist'
+
 function App() {
   return (
     <>
-    <Router>
-      <div className="header">
-        <NavBar/>
-          <Grid container direction="row">
-            <Switch>
-              <Route path="/" exact component={StockList} /> 
-              <Route path="/stock/:stockSymbol" exact component={Indepth} /> 
-              <Route path="/stock" exact>
-              <h1>Please select a stock</h1>
-              </Route> 
-            </Switch> 
-          <Newsfeed/>
-        </Grid>
-      </div>
-      <button onClick={axiostest}>testaxios</button>
-    </Router>
+    <Grid container direction="row">
+      <Router>
+          <NavBar/>
+          <Switch>
+            <Route path="/" exact component={StockList} /> 
+            <Route path="/login" exact component={Login} /> 
+            <Route path="/signup" exact component={SignUp} /> 
+            <Route path="/watchlist" exact component={Watchlist} /> 
+            <Route path="/stock/:stockSymbol" exact component={Indepth} /> 
+            <Route path="/stock" exact>
+            <h1>Please select a stock</h1>
+            </Route> 
+          </Switch>
+          {/* <Newsfeed/> */}
+      </Router>
+    </Grid>
+    <button onClick={axiostest}>testaxios</button>
     </>
   );
 }

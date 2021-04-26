@@ -15,5 +15,4 @@ def preprocess_tweet(data):
     processed_txt = re.sub(r'^b\s+', '', processed_txt)
     # Converting to Lowercase
     processed_txt = processed_txt.lower()
-
-    return text
+    return processed_txt
