@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './nav.css';
+import SearchStocks from './SearchStocks';
 import { Box, Button, InputBase } from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
