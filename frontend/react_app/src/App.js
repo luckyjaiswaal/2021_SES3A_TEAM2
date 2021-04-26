@@ -18,9 +18,9 @@ function App() {
           <Route path="/" exact component={StockList} /> 
           <Route path="/login" exact component={Login} /> 
           <Route path="/signup" exact component={SignUp} /> 
+          <Route path="/watchlist" exact component={Watchlist} /> 
           <Route path="/stock/:stockSymbol" exact component={Indepth} /> 
           <Route path="/stock" exact>
-          <Route path="/watchlist" exact component={Watchlist} /> 
           <h1>Please select a stock</h1>
           </Route>  
         </Switch>
