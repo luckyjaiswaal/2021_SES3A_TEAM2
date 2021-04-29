@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'rest_auth',
+    'knox'
 ]
 
 MIDDLEWARE = [
@@ -78,6 +79,14 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mainapp.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+    ]
+}
 
 TEMPLATES = [
     {

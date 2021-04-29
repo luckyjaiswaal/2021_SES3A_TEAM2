@@ -29,14 +29,9 @@ function App() {
           {/* <Newsfeed/> */}
       </Router>
     </Grid>
-    <button onClick={axiostest}>testaxios</button>
     </>
   );
 }
 
-function axiostest(){
-  axios.get('/api/getjson').then((res)=>{
-    console.log(res)
-  })
-}
+
 export default App;
