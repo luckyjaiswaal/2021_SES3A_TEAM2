@@ -34,7 +34,7 @@ class MyStreamListener(StreamListener):
         # print(f"{status} \n ")
         try:
             pay_load = {
-                "id": int(status.id),
+                "tweet_id": int(status.id),
                 "created_at": int(status.created_at.replace(tzinfo=timezone.utc).timestamp()),
                 "text": status.text or '',
                 "user_screen_name": str(status.user.screen_name) or '',
