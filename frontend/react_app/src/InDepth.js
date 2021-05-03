@@ -10,17 +10,20 @@ import { Line } from 'react-chartjs-2';
 function Indepth({ match }) {
   useEffect(() => {
     fetchItem();
-    console.log(match);
   }, []);
 
   const stockSymbol = match.params.stockSymbol;
 
   const fetchItem = async () => {
-    const fetchItem = await fetch(
-      `https://query1.finance.yahoo.com/v7/finance/chart/${stockSymbol}` //cors blocked it, fetch from our backend instead
-    );
-    const item = await fetchItem.json();
-    console.log(item);
+    fetch(`http://127.0.0.1:8000/api/sentiment_analysis/get_tweets/`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+
+    })
+      .then((response) => response.json())
+      .then((messages) => { console.log(messages); });
   }
 
   const data = {

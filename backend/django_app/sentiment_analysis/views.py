@@ -17,6 +17,9 @@ from rest_framework import permissions
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 
+#Libraries to help access DB
+import csv
+
 # Register API
 class RegisterAPI(generics.GenericAPIView):
     serializer_class = RegisterSerializer
@@ -40,3 +43,31 @@ class LoginAPI(KnoxLoginView):
         user = serializer.validated_data['user']
         login(request, user)
         return super(LoginAPI, self).post(request, format=None)
+
+def get_tweets(request):
+    # Just reading from a csv file now til I can get this hooked onto the database
+    tweets = []
+    tweetObjectArray = []
+    with open('twitter_sentiment.csv', newline='') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
+        for row in spamreader:
+            tweets.append(row)
+
+    tweetObjects = []
+    for tweet in tweets:
+        tweetObjects.append(json.dumps(Tweet(tweet[0],tweet[1],tweet[2],tweet[3]).__dict__))
+        tweetObjectArray.append(Tweet(tweet[0],tweet[1],tweet[2],tweet[3]))
+
+    tweetsObject = [{"tweet_id": t.tweet_id, "sentiment_score": t.sentiment_score,
+                 "text": t.text, "user_screen_name": t.user_screen_name}
+                for t in tweetObjectArray]
+
+    tweetJSON = json.dumps({"tweets": tweetsObject}, indent=3)
+    return HttpResponse(tweetJSON)
+
+class Tweet:
+  def __init__(self, tweet_id, sentiment_score, text, user_screen_name):
+    self.tweet_id = tweet_id
+    self.sentiment_score = sentiment_score
+    self.text = text
+    self.user_screen_name = user_screen_name
