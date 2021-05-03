@@ -30,6 +30,29 @@ export default class StockPrice extends Component {
       tooltip: {
         shared: true,
         formatter: function () {
+
+          var unirest = require("unirest");
+
+          var req = unirest("GET", "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-quotes"); //the 'get-quotes' can change depending upon the data you want to receive
+
+          req.query({
+            "region": "US",
+            "symbols": "TSLA" //change this to the selected stock by symbol
+          });
+
+          req.headers({
+            "x-rapidapi-key": "8e1291f4ffmsh02c96122a52a40ap142830jsn0415cec51648",
+            "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+            "useQueryString": true
+          });
+
+
+          req.end(function (res) {
+            if (res.error) throw new Error(res.error);
+
+            console.log(res.body); //still need to figure out how to extract the data I need and put it in the format which fits the table
+          });
+
           return numberFormat.format(this.y, 0) +  '</b><br/>' + moment(this.x).format('MMMM Do YYYY, h:mm')
         }
       },
