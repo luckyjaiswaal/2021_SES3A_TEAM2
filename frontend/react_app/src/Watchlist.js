@@ -1,8 +1,6 @@
 import './form.css';
 import React, { Component } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField} from "@material-ui/core";
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { Link, Redirect } from 'react-router-dom';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
@@ -28,13 +26,13 @@ export class Watchlist extends Component {
       <TableContainer component={Paper}>
             <Table className="table" aria-label="simple table">
               <TableHead>
-                <TableRow>
-                  <TableCell>Company</TableCell>
-                  <TableCell>Current Price Change %</TableCell>
-                  <TableCell>Sentiment Score</TableCell>
-                  <TableCell>Intraday High / Low</TableCell>
-                  <TableCell>52 Week High / Low</TableCell> 
-                  <TableCell>Set Buy Alert</TableCell> 
+                <TableRow style={{backgroundColor:'#363538'}}>
+                  <TableCell style={{color: '#F6F6F6'}}>Company</TableCell>
+                  <TableCell style={{color: '#F6F6F6'}}>Current Price Change %</TableCell>
+                  <TableCell style={{color: '#F6F6F6'}}>Sentiment Score</TableCell>
+                  <TableCell style={{color: '#F6F6F6'}}>Intraday High / Low</TableCell>
+                  <TableCell style={{color: '#F6F6F6'}}>52 Week High / Low</TableCell> 
+                  <TableCell style={{color: '#F6F6F6'}}>Set Buy Alert</TableCell> 
                 </TableRow>
               </TableHead>
               <TableBody>
