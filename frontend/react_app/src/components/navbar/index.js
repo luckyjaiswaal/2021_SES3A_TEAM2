@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './nav.css';
+import SearchStocks from './SearchStocks';
 import { Box, Button, InputBase } from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
@@ -50,11 +51,11 @@ export default class NavBar extends Component {
       <div className="wrapper">
         <div className="nav">
           <Box display="flex" bgcolor="#8D8C8A" p={2} alignItems="center">
-            <Link to="/" style={{ textDecoration: 'none' }}>
+            <Link to="/stocklist" style={{ textDecoration: 'none' }}>
               <Box fontSize="55px" className="logo">Sent<Box display="inline" fontSize="75px">X</Box></Box>
             </Link>
             <Box className="box">
-            <Link to="/" style={{ textDecoration: 'none' }}>
+            <Link to="/dashboard" style={{ textDecoration: 'none' }}>
               <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Dashboard</NavButton>
             </Link>
             <Link to="/watchlist" style={{ textDecoration: 'none' }}>
@@ -63,7 +64,7 @@ export default class NavBar extends Component {
             <Link to="/profile" style={{ textDecoration: 'none' }}>
               <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Profile</NavButton>
             </Link>
-            <Link to="/login" style={{ textDecoration: 'none' }}>
+            <Link to="/" style={{ textDecoration: 'none' }}>
               <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Logout</NavButton>
             </Link>
             </Box>

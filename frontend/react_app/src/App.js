@@ -8,8 +8,9 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Indepth from './InDepth';
 import Login from './Login'
 import SignUp from './SignUp'
+import Dashboard from './Dashboard'
 import Watchlist from './Watchlist'
-import Profile from './Profile'
+// import Indepth from './InDepth'
 
 function App() {
   return (
@@ -18,11 +19,12 @@ function App() {
       <Router>
           <NavBar/>
           <Switch>
-            <Route path="/" exact component={StockList} /> 
-            <Route path="/login" exact component={Login} /> 
+            <Route path="/" exact component={Login} /> 
+            <Route path="/stocklist" exact component={StockList} /> 
             <Route path="/signup" exact component={SignUp} /> 
             <Route path="/watchlist" exact component={Watchlist} /> 
-            <Route path="/profile" exact component={Profile} /> 
+            <Route path="/dashboard" exact component={Dashboard} /> 
+            <Route path="/indepth" exact component={Indepth} /> 
             <Route path="/stock/:stockSymbol" exact component={Indepth} /> 
             <Route path="/stock" exact>
             <h1>Please select a stock</h1>
@@ -31,9 +33,14 @@ function App() {
           {/* <Newsfeed/> */}
       </Router>
     </Grid>
+    <button onClick={axiostest}>testaxios</button>
     </>
   );
 }
 
-
+function axiostest(){
+  axios.get('/api/getjson').then((res)=>{
+    console.log(res)
+  })
+}
 export default App;
