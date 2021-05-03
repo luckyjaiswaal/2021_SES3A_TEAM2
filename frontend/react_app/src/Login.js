@@ -39,7 +39,6 @@ export class Login extends Component {
     return (
       <div className="container">
         <div className="inner-width">
-          <h1 className="logo">SentX</h1>
           <h1>Login</h1>
           <div className="register-form">
               <div className="names">
@@ -53,8 +52,7 @@ export class Login extends Component {
                   required />
               </div>
               <button to="/" className="btn" onClick={this.login}>Login</button>
-            <h5>OR</h5>
-            <p className="middle">Don't Have Account</p>
+            <p className="middle">Don't Have Account?</p>
             <Link to="/signup" className="btn" >Register</Link>
           </div>
         </div>
