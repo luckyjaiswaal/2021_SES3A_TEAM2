@@ -1,0 +1,26 @@
+[
+    {
+        "stock": "Tesla",
+        "symbol": "TSLA",
+        "price": "$420 ↑ 50",
+        "score": "69/100 ↓"
+    },
+    {
+        "stock": "Google",
+        "symbol": "GOOGL",
+        "price": "$330 ↓ 30",
+        "score": "40/100 ↓"
+    },
+    {
+        "stock": "Amazon",
+        "symbol": "AMZN",
+        "price": "$563 ↑ 40",
+        "score": "55/100 ↑"
+    },
+    {
+        "stock": "Facebook",
+        "symbol": "FB",
+        "price": "$450 ↑ 10",
+        "score": "77/100 ↑"
+    }
+]

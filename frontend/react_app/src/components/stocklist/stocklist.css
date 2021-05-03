@@ -10,3 +10,86 @@
 .head{
     color:bisque
 }
+
+
+
+.CardWrapper {
+    flex: 0 1 300px;
+    margin: 12px;
+    overflow: hidden;
+    padding: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05),
+      0 0px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+    flex-wrap: wrap;
+    min-width: 300px;
+  }
+  .Header {
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .largePrice {
+    top: 40%;
+    width: 40%;
+    float: left;
+  }
+  .ColDetail {
+    padding-top: 3%;
+    width: 60%;
+    float: left;
+  }
+  .price {
+    height: 100px;
+  }
+  .stock {
+    font-size: 20px;
+  }
+  .symbol {
+    color: #757575;
+    font-size: 14px;
+    margin-bottom:10px;
+  }
+  .score {
+    font-size: 14px;
+  }
+
+  .scoreNumber {
+    padding-top: 8px;
+    height: 100px;
+  }
+
+  .Container {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 45px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+
+
+  .Search {
+    width: 400px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+  }
+  .SearchSpan {
+    width: 15%;
+    border: 1px solid #1C76D2;
+    background: #1C76D2;
+    padding-top: 4px;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px 0 0 5px;
+    font-size: 20px;
+  }
+  .SearchInput {
+    width: 85%;
+    border: 3px solid #1C76D2;
+    border-left: none;
+    padding: 5px;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+  }
