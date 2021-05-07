@@ -55,7 +55,7 @@ export default class NavBar extends Component {
               <Box fontSize="55px" className="logo">Sent<Box display="inline" fontSize="75px">X</Box></Box>
             </Link>
             <Box className="box">
-            <Link to="/dashboard" style={{ textDecoration: 'none' }}>
+            <Link to="/stocklist" style={{ textDecoration: 'none' }}>
               <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Dashboard</NavButton>
             </Link>
             <Link to="/watchlist" style={{ textDecoration: 'none' }}>
