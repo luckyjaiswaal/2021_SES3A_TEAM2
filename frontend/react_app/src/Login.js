@@ -1,6 +1,6 @@
 import './form.css';
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {Button, TextField, Typography} from "@material-ui/core";
 
 
@@ -20,8 +20,8 @@ export class Login extends Component {
       <div className="container">
         <div className="inner-width">
         <Typography component="h1" variant="h5">
-          Login
-        </Typography>
+            Login
+          </Typography>          
         <div className="register-form">
           <form>
             <div className="names">
@@ -36,7 +36,7 @@ export class Login extends Component {
               name="password" 
               placeholder="Password" 
               required
-                />
+              />
             </div>
             <div>
               <Link to="/stocklist">

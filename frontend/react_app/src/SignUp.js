@@ -1,6 +1,7 @@
 import './form.css';
 import React, { Component } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import {Button, Typography} from "@material-ui/core";
 
 
 
@@ -12,8 +13,9 @@ export class Signup extends Component{
             
             <div className="container">
             <div className="inner-width">
-                <h1 className="logo">SentX</h1>
-                <h1 className="middle">Register For New Account</h1>
+                <Typography component="h1" variant="h5">
+                Register
+                </Typography>  
                 <div className="register-form">
                     <form>
                         <div className="names">
@@ -24,11 +26,19 @@ export class Signup extends Component{
                             <input type="password" name="password" placeholder="Password"  required />
                             <input type="password" name="password2" placeholder="Confirm Password" required />
                         </div>
-                        <Link to="/" className="btn">Register</Link>
+            <Link to="/stocklist">
+                <Button className="loginbtn"
+                type="submit"
+                fullWidth
+                size="large"
+                variant="contained"
+                color="primary"
+                >
+                Register
+                </Button>
+            </Link>
                     </form>
-                    <h5 className="middle">OR</h5>
-
-                    <Link to="/" className="btn">Login</Link>
+                    <p className="middle">Already Have An Account? <Link to="/">Login Here</Link></p>
                 </div>
             </div>
         </div>

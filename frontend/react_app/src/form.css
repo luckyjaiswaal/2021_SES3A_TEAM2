@@ -32,6 +32,7 @@
     border: 2px solid grey;
     padding: 40px;
     margin-top: 10px;
+    margin-bottom: 20px;
     background:white;
     border-radius: 10px;
   }
@@ -53,6 +54,11 @@
   border: 2px solid white;
   font-size: 19px;
   margin-top: 5px;
+}
+.btn2{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
 }
 .btns{
   text-decoration: none;
