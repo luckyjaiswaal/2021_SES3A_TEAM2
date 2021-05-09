@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Container, TextField, Avatar, Typography, Button, Grid} from "@material-ui/core";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
+import SaveIcon from '@material-ui/icons/Save';
 // import { Link, Redirect } from 'react-router-dom';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import {useForm, Controller} from 'react-hook-form'
@@ -96,6 +97,7 @@ class Profile extends Component {
               variant="contained"
               color="primary"
               className={classes.submit}
+              startIcon={<SaveIcon/>}
               >
               Save
             </Button>

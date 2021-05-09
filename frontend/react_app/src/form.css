@@ -17,7 +17,7 @@
   }
   h1{
     margin: 4px;
- 
+    margin-top: 50px;
     text-align: center;
   }
    h5{
@@ -29,11 +29,11 @@
     display: block;
     margin: auto;
     width: fit-content;
-    border: 12px solid grey;
+    border: 2px solid grey;
     padding: 40px;
-    margin-top: 20px;
-    background:grey ;
-    border-radius: 50px;
+    margin-top: 10px;
+    background:white;
+    border-radius: 10px;
   }
 .names{
   display: flex;
@@ -60,6 +60,10 @@
   padding-top: 3px;
   font-weight: 600;
   color: white;
+}
+.loginbtn{
+  margin: 20px;
+  padding: 20px;
 }
 ::placeholder{
 color: black;
