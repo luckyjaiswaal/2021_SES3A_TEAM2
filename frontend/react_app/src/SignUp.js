@@ -46,14 +46,14 @@ export class Signup extends Component{
                 fullWidth
                 size="large"
                 variant="contained"
-                color="primary"
+                color="black"
                 >
                 Register
                 </Button>
             </Link>
                     </form>
-                    <p className="middle">Already Have An Account? <Link to="/">Login Here</Link></p>
                 </div>
+                <p className="middle">Already Have An Account? <Link to="/">Login Here</Link></p>
             </div>
         </div>
 

@@ -47,15 +47,15 @@ export class Login extends Component {
                 fullWidth
                 size="large"
                 variant="contained"
-                color="primary"
+                color="black"
                 >
                 Login
                 </Button>
               </Link>
             </div>
             </form>
-            <p className="middle">Don't Have Account? <Link to="/signup">Register Here</Link></p>
           </div>
+          <p className="middle">Don't Have Account? <Link to="/signup">Register Here</Link></p>
         </div>
       </div>
     )
