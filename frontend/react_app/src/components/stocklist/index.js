@@ -4,9 +4,9 @@ import SearchBar from "./SearchBar.js";
 import React, { Component, useState } from "react";
 import Fuse from "fuse.js";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from "@material-ui/core";
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
-import { Link } from 'react-router-dom';
+// import { withStyles, makeStyles } from '@material-ui/core/styles';
+// import SearchIcon from '@material-ui/icons/Search';
+// import { Link } from 'react-router-dom';
 
 // const useStyles = makeStyles({
 //     table: {
@@ -88,11 +88,11 @@ import { Link } from 'react-router-dom';
     <Table className="table" aria-label="simple table" style={{ minWidth: 650}}>
       <TableHead className="head">
         <TableRow style={{backgroundColor:'#363538'}}>
-          <TableCell style={{color: '#F6F6F6'}}>Stock</TableCell>
-          <TableCell style={{color: '#F6F6F6'}}>Symbol</TableCell>
+          <TableCell style={{color: '#F6F6F6'}}>Stocks</TableCell>
+          {/* <TableCell style={{color: '#F6F6F6'}}>Symbol</TableCell>
           <TableCell style={{color: '#F6F6F6'}}>Price</TableCell>
           <TableCell style={{color: '#F6F6F6'}}>Sentiment Score</TableCell>
-          <TableCell align="right" style={{color: '#F6F6F6'}}>Action</TableCell> 
+          <TableCell align="right" style={{color: '#F6F6F6'}}>Action</TableCell>  */}
         </TableRow>
       </TableHead>
       <TableBody>

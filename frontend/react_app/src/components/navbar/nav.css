@@ -28,13 +28,13 @@
 }
 
 .btn {
-    height: 80px;
+    height: auto;
     width: 200px;
 }
 
 .input{
-    width: 300px;
-    margin: right;
+    /* width: 300px;
+    margin: right; */
 }
 
 .logo {

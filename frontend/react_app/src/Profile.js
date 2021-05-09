@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { Container, TextField, Avatar, Typography, Button, Grid} from "@material-ui/core";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link, Redirect } from 'react-router-dom';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import {useForm, Controller} from 'react-hook-form'
+// import { Link, Redirect } from 'react-router-dom';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import {useForm, Controller} from 'react-hook-form'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -59,7 +59,7 @@ class Profile extends Component {
               id="firstname"
               label="First Name"
               name="firstname"
-              autoFocus
+              // autoFocus
               />
             <TextField
               variant="outlined"
@@ -68,7 +68,7 @@ class Profile extends Component {
               id="lastname"
               label="Last Name"
               name="lastname"
-              autoFocus
+              // autoFocus
               />
             <TextField
               variant="outlined"
@@ -77,7 +77,7 @@ class Profile extends Component {
               id="phone"
               label="Phone"
               name="phone"
-              autoFocus
+              // autoFocus
               />
             <TextField
               variant="outlined"
