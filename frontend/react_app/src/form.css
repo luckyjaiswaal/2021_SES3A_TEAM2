@@ -30,7 +30,7 @@
     margin: auto;
     width: fit-content;
     border: 2px solid grey;
-    padding: 40px;
+    padding: 70px;
     margin-top: 10px;
     margin-bottom: 20px;
     background:white;
@@ -71,24 +71,24 @@
   margin: 20px;
   padding: 20px;
 }
-::placeholder{
+/* ::placeholder{
 color: black;
 opacity: 0.6;
-} 
+}  */
 
   .logo{
     font-size: 30px;
     font-weight: 900;
     color:grey;
   }
-  .register-form input{
+  /* .register-form input{
     color: black;
     font-size: 20px;
     outline: 1px solid black;
     margin: 10px;
     padding: 10px;
     
-  }
+  } */
   .middle{
     margin-top: 100px;
     text-align: center;

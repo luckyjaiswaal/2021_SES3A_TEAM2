@@ -21,14 +21,18 @@ const rows = [
   createData('Facebook', '$450 ↑ 10 10', '77/100', '640/230','700/205'),
 ];
 
-// function setColorStyle(text) {
-//   if (text.includes("↑")) {
-//     return 'green'
-//   } else if (text.includes("↓")) {
-//     return 'red';
-//   } else {
-//     return 'grey';
-//   }
+// const priceStyle = {color : setColorStyle(price)};
+// const sentimentStyle = {color : setColorStyle(score)};
+
+function setColorStyle(text) {
+  if (text.includes("↑")) {
+    return 'green'
+  } else if (text.includes("↓")) {
+    return 'red';
+  } else {
+    return 'grey';
+  }
+}
 
 export class Watchlist extends Component {
 

@@ -88,7 +88,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
     <Table className="table" aria-label="simple table" style={{ minWidth: 650}}>
       <TableHead className="head">
         <TableRow style={{backgroundColor:'#363538'}}>
-          <TableCell style={{color: '#F6F6F6'}}>Stocks</TableCell>
+          <TableCell style={{color: '#F6F6F6'}}>Stocks</  TableCell>
           {/* <TableCell style={{color: '#F6F6F6'}}>Symbol</TableCell>
           <TableCell style={{color: '#F6F6F6'}}>Price</TableCell>
           <TableCell style={{color: '#F6F6F6'}}>Sentiment Score</TableCell>

@@ -26,20 +26,22 @@ export class Login extends Component {
           <form>
             <div className="names">
               <TextField 
+              id="outlined-basic" label="Username" variant="outlined"
               type="text" 
-              name="username" 
+              name="Username" 
               placeholder="Username"
-              required
               />
+              <br/>
               <TextField 
+              id="outlined-basic" label="Password" variant="outlined"
               type="password" 
               name="password" 
               placeholder="Password" 
-              required
               />
+              <br/>
             </div>
             <div>
-              <Link to="/stocklist">
+              <Link to="/stocklist"  style={{ textDecoration: 'none' }}>
                 <Button className="loginbtn"
                 type="submit"
                 fullWidth
