@@ -9,6 +9,7 @@ import Indepth from './InDepth';
 import Login from './Login'
 import SignUp from './SignUp'
 import Dashboard from './Dashboard'
+import Profile from './Profile'
 import Watchlist from './Watchlist'
 // import Indepth from './InDepth'
 
@@ -22,7 +23,8 @@ function App() {
             <Route path="/" exact component={Login} /> 
             <Route path="/stocklist" exact component={StockList} /> 
             <Route path="/signup" exact component={SignUp} /> 
-            <Route path="/watchlist" exact component={Watchlist} /> 
+            <Route path="/watchlist" exact component={Watchlist} />
+            <Route path="/profile" exact component={Profile} />  
             <Route path="/dashboard" exact component={Dashboard} /> 
             <Route path="/indepth" exact component={Indepth} /> 
             <Route path="/stock/:stockSymbol" exact component={Indepth} /> 
