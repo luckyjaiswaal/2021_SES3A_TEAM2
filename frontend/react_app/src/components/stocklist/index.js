@@ -6,7 +6,6 @@ import React, { Component, useState } from "react";
 import Fuse from "fuse.js";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from "@material-ui/core";
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
 
   function App () {
 
@@ -42,7 +41,7 @@ import { Link } from 'react-router-dom';
       <TableBody>
         <SearchBar
           placeholder="Search"
-          onChange={(e) => searchData(e.target.value)}
+          onChange = {(e) => searchData(e.target.value)}
         />
         <div className = "Container">
         {data.map((item) => (

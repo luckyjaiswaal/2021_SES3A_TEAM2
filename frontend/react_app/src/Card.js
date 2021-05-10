@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 function setColorStyle(text) {
     if (text.includes("↑")) {
@@ -15,6 +16,7 @@ const Card = ({stock, symbol, price, score}) => {
     const sentimentStyle = {color : setColorStyle(score)};
     return (
       <div className="CardWrapper">
+        <Link to={`stock/${symbol}`} style={{ textDecoration: 'none' }}>
         <div className="ColDetail">
           <div className="Header">
             <div className="stock">
@@ -27,6 +29,7 @@ const Card = ({stock, symbol, price, score}) => {
         <div className="largePrice">
           <div className="price" style = {priceStyle}>{price} <div className ="scoreNumber" style = {sentimentStyle}>{score}</div></div>
         </div>
+        </Link>
       </div>
     );
   };
