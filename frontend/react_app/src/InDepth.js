@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import NavBar from './components/navbar/index';
 import StockList from './components/stocklist/index';
@@ -7,22 +7,26 @@ import './indepth.css'
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField} from "@material-ui/core";
 
 function Indepth({ match }) {
+  const [tweets, setTweets] = useState([]);
   useEffect(() => {
     fetchItem();
     console.log(match);
   }, []);
 
   const stockSymbol = match.params.stockSymbol;
-
+  
   const fetchItem = async () => {
     const fetchItem = await fetch(
-      `https://query1.finance.yahoo.com/v7/finance/chart/${stockSymbol}` //cors blocked it, fetch from our backend instead
-    );
-    const item = await fetchItem.json();
-    console.log(item);
-  }
+      `http://127.0.0.1:8000/api/sentiment_analysis/get_tweets/`
+      );
+      const item = await fetchItem.json();
+      console.log(item);
+      setTweets(item.tweets);
+      console.log(tweets);
+    }
 
   const data = {
     labels: ['1', '2', '3', '4', '5', '6'],
@@ -65,10 +69,35 @@ function Indepth({ match }) {
             
           </div>
         </div>
+          <h1>In depth anaylsis of {stockSymbol}</h1>
         <div className="section">
           <div className="time">
-
-            <h3>Search Bar stock to be displayed in the bar.</h3> {fetchItem}
+            <TableContainer component={Paper} className="tablecontainer" style={{width:600}}>
+              <Table className="table" aria-label="simple table">
+                <TableHead>
+                  <TableRow style={{backgroundColor:'#363538'}}>
+                    <TableCell style={{color: '#F6F6F6'}}>Sentiment Score</TableCell>
+                    <TableCell style={{color: '#F6F6F6'}}>Text</TableCell>
+                    <TableCell style={{color: '#F6F6F6'}}>User Screen Name</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {tweets.slice(1, tweets.length).map((tweet) => (
+                    <TableRow key={tweet.tweet_id}>
+                      <TableCell component="th" scope="row">
+                        {tweet.sentiment_score}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {tweet.text}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {tweet.user_screen_name}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
           </div>
           <div className="chart">
             <div className="sentiment">

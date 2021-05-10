@@ -1,8 +1,8 @@
 import './form.css';
 import React, { Component } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField} from "@material-ui/core";
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { Link, Redirect } from 'react-router-dom';
+// import { withStyles, makeStyles } from '@material-ui/core/styles';
+// import { Link, Redirect } from 'react-router-dom';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
@@ -21,61 +21,76 @@ const rows = [
   createData('Facebook', '$450 ↑ 10 10', '77/100', '640/230','700/205'),
 ];
 
+// const priceStyle = {color : setColorStyle(price)};
+// const sentimentStyle = {color : setColorStyle(score)};
+
+function setColorStyle(text) {
+  if (text.includes("↑")) {
+    return 'green'
+  } else if (text.includes("↓")) {
+    return 'red';
+  } else {
+    return 'grey';
+  }
+}
+
 export class Watchlist extends Component {
 
   render() {
     return (
-      <TableContainer component={Paper}>
-            <Table className="table" aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Company</TableCell>
-                  <TableCell>Current Price Change %</TableCell>
-                  <TableCell>Sentiment Score</TableCell>
-                  <TableCell>Intraday High / Low</TableCell>
-                  <TableCell>52 Week High / Low</TableCell> 
-                  <TableCell>Set Buy Alert</TableCell> 
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.stock}>
-                    <TableCell component="th" scope="row">
-                      {row.stock}
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      {row.symbol}
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      {row.price}
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      {row.score}
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      {row.week}
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      <TextField id="outlined-basic" label="Set Price" variant="outlined" />
-                      <br/>
-                      <FormControlLabel
-                        value="sms"
-                        control={<Checkbox color="primary" />}
-                        label="SMS"
-                        labelPlacement="end"
-                      />
-                      <FormControlLabel
-                        value="email"
-                        control={<Checkbox color="primary" />}
-                        label="E-mail"
-                        labelPlacement="end"
-                      />
-                      </TableCell>
+      <>
+        <TableContainer component={Paper} className="tablecontainer" style={{width:1200}}>
+              <Table className="table" aria-label="simple table">
+                <TableHead>
+                  <TableRow style={{backgroundColor:'#363538'}}>
+                    <TableCell style={{color: '#F6F6F6'}}>Company</TableCell>
+                    <TableCell style={{color: '#F6F6F6'}}>Current Price Change %</TableCell>
+                    <TableCell style={{color: '#F6F6F6'}}>Sentiment Score</TableCell>
+                    <TableCell style={{color: '#F6F6F6'}}>Intraday High / Low</TableCell>
+                    <TableCell style={{color: '#F6F6F6'}}>52 Week High / Low</TableCell> 
+                    <TableCell style={{color: '#F6F6F6'}}>Set Buy Alert</TableCell> 
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row) => (
+                    <TableRow key={row.stock}>
+                      <TableCell component="th" scope="row">
+                        {row.stock}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {row.symbol}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {row.price}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {row.score}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {row.week}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        <TextField id="outlined-basic" label="Set Price" variant="outlined" />
+                        <br/>
+                        <FormControlLabel
+                          value="sms"
+                          control={<Checkbox color="primary" />}
+                          label="SMS"
+                          labelPlacement="end"
+                          />
+                        <FormControlLabel
+                          value="email"
+                          control={<Checkbox color="primary" />}
+                          label="E-mail"
+                          labelPlacement="end"
+                          />
+                        </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </>
     )
   }
 }

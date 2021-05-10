@@ -1,13 +1,9 @@
-.table {
+.table{
   /* min-width: 650px; */
   padding: auto;
 }
 
-.tablecontainer {
+.tablecontainer{
   padding: auto;
   margin: auto;
-}
-
-.head {
-  color: bisque;
 }

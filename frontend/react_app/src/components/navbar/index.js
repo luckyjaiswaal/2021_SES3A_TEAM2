@@ -5,6 +5,7 @@ import { Box, Button, InputBase } from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
+import store from "../store";
 
 const NavButton = withStyles({
   root: {
@@ -55,7 +56,7 @@ export default class NavBar extends Component {
               <Box fontSize="55px" className="logo">Sent<Box display="inline" fontSize="75px">X</Box></Box>
             </Link>
             <Box className="box">
-            <Link to="/dashboard" style={{ textDecoration: 'none' }}>
+            <Link to="/stocklist" style={{ textDecoration: 'none' }}>
               <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Dashboard</NavButton>
             </Link>
             <Link to="/watchlist" style={{ textDecoration: 'none' }}>
@@ -65,7 +66,7 @@ export default class NavBar extends Component {
               <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Profile</NavButton>
             </Link>
             <Link to="/" style={{ textDecoration: 'none' }}>
-              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Logout</NavButton>
+              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }} onClick={()=>store.dispatch({type: "logout"})}>Logout {store.getState()}</NavButton>
             </Link>
             </Box>
                     &nbsp;

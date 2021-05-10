@@ -1,6 +1,7 @@
 import './form.css';
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {Button, TextField, Typography} from "@material-ui/core";
 
 
 
@@ -18,22 +19,43 @@ export class Login extends Component {
     return (
       <div className="container">
         <div className="inner-width">
-          <h1 className="logo">SentX</h1>
-          <h1>Login</h1>
-          <div className="register-form">
-            <form >
-              <div className="names">
-                <input type="text" name="username" placeholder="Username"
-                  required />
-                <input type="password" name="password" placeholder="Password" 
-                  required />
-              </div>
-              <Link to="/stocklist" className="btn" >Login</Link>
+        <Typography component="h1" variant="h5">
+            Login
+          </Typography>          
+        <div className="register-form">
+          <form>
+            <div className="names">
+              <TextField 
+              id="outlined-basic" label="Username" variant="outlined"
+              type="text" 
+              name="Username" 
+              placeholder="Username"
+              />
+              <br/>
+              <TextField 
+              id="outlined-basic" label="Password" variant="outlined"
+              type="password" 
+              name="password" 
+              placeholder="Password" 
+              />
+              <br/>
+            </div>
+            <div>
+              <Link to="/stocklist"  style={{ textDecoration: 'none' }}>
+                <Button className="loginbtn"
+                type="submit"
+                fullWidth
+                size="large"
+                variant="contained"
+                color="black"
+                >
+                Login
+                </Button>
+              </Link>
+            </div>
             </form>
-            <h5>OR</h5>
-            <p className="middle">Don't Have Account</p>
-            <Link to="/signup" className="btn" >Register</Link>
           </div>
+          <p className="middle">Don't Have Account? <Link to="/signup">Register Here</Link></p>
         </div>
       </div>
     )
