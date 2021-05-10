@@ -20,7 +20,7 @@ kafka_producer = KafkaProducer(
     api_version=(0, 1, 0),
     max_request_size=3173440261
 )
-kafka_topic = 'twitterdata'
+kafka_topic = 'twitter_data_raw'
 
 
 def twitter_auth(consumer_key, consumer_secret, access_token, access_secret):
@@ -48,9 +48,12 @@ class MyStreamListener(StreamListener):
             "created_at": int(status.created_at.replace(tzinfo=timezone.utc).timestamp()),
             "text": text or '',
             "user_screen_name": str(status.user.screen_name) or '',
+            "user_created_at": str(status.user.created_at) or '',
             "user_followers_count": int(status.user.followers_count),
+            "user_statuses_count": int(status.user.statuses_count),
             "retweet_count": int(status.retweet_count),
-            "favorite_count": int(status.favorite_count)
+            "favorite_count": int(status.favorite_count),
+            "quote_count": int(status.quote_count),
         }
 
         try:
@@ -68,9 +71,9 @@ def main():
     myStream = Stream(auth=auth, listener=stream_listener)
     print(f"Connected to Twitter api :{auth}")
 
-    trakcs = ['tsla', 'tesla', '#tsla', '#tesla']
-    myStream.filter(track=trakcs)
-    print(f"Created stream, listening for: {trakcs}")
+    tracks = ['tsla', 'tesla']
+    myStream.filter(track=tracks)
+    print(f"Created stream, listening for: {tracks}")
 
 
 if __name__ == "__main__":
