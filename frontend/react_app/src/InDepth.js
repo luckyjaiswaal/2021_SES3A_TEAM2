@@ -61,7 +61,7 @@ function Indepth({ match }) {
             <input type="search" placeholder="Search For Stock" />
           </div>
           <div className="dashboard-btn">
-            <Link to="/dashboard">
+            <Link to="/stocklist">
             <button className="btn">
               
               Dashboard</button>
