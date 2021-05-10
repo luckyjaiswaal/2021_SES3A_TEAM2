@@ -1,11 +1,12 @@
 import json
 from datetime import timezone
+import sys
 from tweepy.streaming import StreamListener
 from tweepy import Stream
 from tweepy import OAuthHandler
 from kafka import KafkaProducer, KafkaConsumer, KafkaClient
 import twitter_config
-
+from tweepy.api import API
 
 # Get Twitter API creds from config.py
 consumer_key = twitter_config.consumer_key
@@ -30,6 +31,14 @@ def twitter_auth(consumer_key, consumer_secret, access_token, access_secret):
 
 
 class MyStreamListener(StreamListener):
+    def __init__(self, api=None, kafka_producer=None, kafka_topic=None, tracks=None):
+        super().__init__(api)
+        self.api = api or API()
+
+        self.kafka_producer = kafka_producer
+        self.kafka_topic = kafka_topic
+        self.tracks = tracks
+
     def on_status(self, status):
         print(f"{status} \n ")
         try:
@@ -38,9 +47,9 @@ class MyStreamListener(StreamListener):
                 "created_at": int(status.created_at.replace(tzinfo=timezone.utc).timestamp()),
                 "text": status.text or '',
                 "user_screen_name": str(status.user.screen_name) or '',
-                "user_followers_count": int(status.user.followers_count),
-                "retweet_count": int(status.retweet_count),
-                "favorite_count": int(status.favorite_count)
+                "user_followers_count": int(status.user.followers_count)
+                # "retweet_count": int(status.retweet_count),
+                # "favorite_count": int(status.favorite_count)
             }
             # kafka_producer.send(kafka_topic, value=pay_load)
             # print(f'Produced tweet to {kafka_topic}: \n {pay_load} \n ')
@@ -51,15 +60,14 @@ class MyStreamListener(StreamListener):
 
 def main():
     print("Setting up twitter stream...")
-    stream_listener = MyStreamListener()
-    auth = twitter_auth(consumer_key, consumer_secret,
-                        access_token, access_secret)
+    tracks = ['tsla', 'tesla']
+    stream_listener = MyStreamListener(kafka_producer, kafka_topic, tracks)
+    auth = twitter_auth(consumer_key, consumer_secret, access_token, access_secret)
     myStream = Stream(auth=auth, listener=stream_listener)
     print(f"Connected to Twitter api :{auth}")
 
-    trakcs = ['tsla', 'tesla']
-    myStream.filter(track=trakcs)
-    print(f"Created stream, listening for: {trakcs}")
+    myStream.filter(track=tracks)
+    print(f"Created stream, listening for: {tracks}")
 
 
 if __name__ == "__main__":

@@ -17,7 +17,8 @@ access_secret = twitter_config.access_secret
 kafka_producer = KafkaProducer(
     value_serializer=lambda v: json.dumps(v).encode('utf-8'),
     bootstrap_servers=['localhost:9092'],
-    api_version=(0, 1, 0)
+    api_version=(0, 1, 0),
+    max_request_size=3173440261
 )
 kafka_topic = 'twitterdata'
 
@@ -31,20 +32,31 @@ def twitter_auth(consumer_key, consumer_secret, access_token, access_secret):
 
 class MyStreamListener(StreamListener):
     def on_status(self, status):
-        print(f"{status} \n ")
+        if hasattr(status, "retweeted_status"):
+            try:
+                text = status.retweeted_status.extended_tweet["full_text"]
+            except AttributeError:
+                text = status.retweeted_status.text
+        else:
+            try:
+                text = status.extended_tweet["full_text"]
+            except AttributeError:
+                text = status.text
+
+        pay_load = {
+            "tweet_id": status.id,
+            "created_at": int(status.created_at.replace(tzinfo=timezone.utc).timestamp()),
+            "text": text or '',
+            "user_screen_name": str(status.user.screen_name) or '',
+            "user_followers_count": int(status.user.followers_count),
+            "retweet_count": int(status.retweet_count),
+            "favorite_count": int(status.favorite_count)
+        }
+
         try:
-            pay_load = {
-                "tweet_id": int(status.id),
-                "created_at": int(status.created_at.replace(tzinfo=timezone.utc).timestamp()),
-                "text": status.text or '',
-                "user_screen_name": str(status.user.screen_name) or '',
-                "user_followers_count": int(status.user.followers_count),
-                "retweet_count": int(status.retweet_count),
-                "favorite_count": int(status.favorite_count)
-            }
-            # kafka_producer.send(kafka_topic, value=pay_load)
-            # print(f'Produced tweet to {kafka_topic}: \n {pay_load} \n ')
-            # kafka_producer.flush()
+            kafka_producer.send(kafka_topic, value=pay_load)
+            print(f'Produced tweet to {kafka_topic}: \n {pay_load} \n ')
+            kafka_producer.flush()
         except AssertionError as e:
             print(f"{e} - Error processing data {pay_load}")
 
@@ -52,12 +64,11 @@ class MyStreamListener(StreamListener):
 def main():
     print("Setting up twitter stream...")
     stream_listener = MyStreamListener()
-    auth = twitter_auth(consumer_key, consumer_secret,
-                        access_token, access_secret)
+    auth = twitter_auth(consumer_key, consumer_secret, access_token, access_secret)
     myStream = Stream(auth=auth, listener=stream_listener)
     print(f"Connected to Twitter api :{auth}")
 
-    trakcs = ['tsla', 'tesla']
+    trakcs = ['tsla', 'tesla', '#tsla', '#tesla']
     myStream.filter(track=trakcs)
     print(f"Created stream, listening for: {trakcs}")
 
