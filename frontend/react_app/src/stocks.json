@@ -22,5 +22,17 @@
         "symbol": "FB",
         "price": "$450 ↑ 10",
         "score": "77/100 ↑"
+    },
+    {
+        "stock": "Apple Inc",
+        "symbol": "AAPL",
+        "price": "$130.21 ↑ 0.69",
+        "score": "35/100 ↑"
+    },
+    {
+        "stock": "Microsoft Corporation",
+        "symbol": "MSFT",
+        "price": "$252.46 ↑ 2.73",
+        "score": "80/100 ↑"
     }
 ]
