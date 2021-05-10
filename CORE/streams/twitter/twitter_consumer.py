@@ -1,5 +1,3 @@
-
-
 from kafka import KafkaConsumer
 from datetime import timezone
 import json
@@ -10,7 +8,7 @@ sys.path.insert(
     1, '/Users/yiming.gu/Desktop/Personal/U/3A fml/2021_SES3A_TEAM2/CORE')
 from nlp import tweets_processor, nlp_twitter
 
-kafka_topic = 'twitterdata'
+kafka_topic = 'twitter_data_raw'
 
 
 def forgiving_json_deserializer(data):
@@ -74,14 +72,20 @@ def main():
 
             paylod = {
                 "tweet_id": message.value['tweet_id'],
-                "user_screen_name": message.value['user_screen_name'],
+                "created_at": message.value['created_at'],
                 "text": message.value['text'],
+                "user_screen_name": message.value['user_screen_name'],
+                "user_created_at": message.value['user_created_at'],
+                "user_followers_count": message.value['user_followers_count'],
+                "user_statuses_count": message.value['user_statuses_count'],
+                "retweet_count": message.value['retweet_count'],
+                "favorite_count": message.value['favorite_count'],
+                "quote_count": message.value['quote_count'],
                 "sentiment_score": json.loads(json.dumps(sent_score_vader), parse_float=Decimal)
-                # "sentiment_score_num": sent_score_vader_int
             }
             table_sent.put_item(Item=paylod)
             print(f"Sent sentiment score data to dynamodb {paylod}")
-
+            print("\n \n ")
             # print(
             #     f"Raw message: {message.value['text']} \nPreprocessed: {processed_tweet} \nVader:{sent_score_vader} \nTextblob:{sent_score_txtblob} \n\n\n")
 
