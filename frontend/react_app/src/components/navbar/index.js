@@ -3,7 +3,6 @@ import './nav.css';
 import SearchStocks from './SearchStocks';
 import { Box, Button, InputBase } from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
 import store from "../store";
 
@@ -57,27 +56,21 @@ export default class NavBar extends Component {
             </Link>
             <Box className="box">
             <Link to="/stocklist" style={{ textDecoration: 'none' }}>
-              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Dashboard</NavButton>
+              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px', width: '250px' }}>Dashboard</NavButton>
             </Link>
             <Link to="/watchlist" style={{ textDecoration: 'none' }}>
-              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Watchlist</NavButton>
+              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px', width: '250px' }}>Watchlist</NavButton>
             </Link>
             <Link to="/profile" style={{ textDecoration: 'none' }}>
-              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }}>Profile</NavButton>
+              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px', width: '250px' }}>Profile</NavButton>
             </Link>
             <Link to="/" style={{ textDecoration: 'none' }}>
-              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px' }} onClick={()=>store.dispatch({type: "logout"})}>Logout {store.getState()}</NavButton>
+              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px', width: '250px' }} onClick={()=>store.dispatch({type: "logout"})}>Logout {store.getState()}</NavButton>
             </Link>
             </Box>
                     &nbsp;
-                    <SearchIcon />
                     &nbsp;&nbsp;&nbsp;
                     <div>
-              <InputBase
-                align='right'
-                className="input"
-                placeholder="Search for stocks"
-              />
             </div>
           </Box>
         </div>
@@ -85,3 +78,11 @@ export default class NavBar extends Component {
     )
   }
 }
+
+/*
+<InputBase
+                align='right'
+                className="input"
+                placeholder="Search for stocks"
+              />
+*/
