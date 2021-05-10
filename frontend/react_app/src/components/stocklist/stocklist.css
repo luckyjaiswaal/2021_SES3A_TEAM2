@@ -32,12 +32,12 @@
   }
   .largePrice {
     top: 40%;
-    width: 40%;
+    width: 50%;
     float: left;
   }
   .ColDetail {
     padding-top: 3%;
-    width: 60%;
+    width: 50%;
     float: left;
   }
   .price {
@@ -78,8 +78,8 @@
   }
   .SearchSpan {
     width: 15%;
-    border: 1px solid #1C76D2;
-    background: #1C76D2;
+    border: 1px solid #8d8c8a;
+    background: #8d8c8a;
     padding-top: 4px;
     text-align: center;
     color: #fff;
@@ -88,7 +88,7 @@
   }
   .SearchInput {
     width: 85%;
-    border: 3px solid #1C76D2;
+    border: 3px solid #8d8c8a;
     border-left: none;
     padding: 5px;
     border-radius: 0 5px 5px 0;
