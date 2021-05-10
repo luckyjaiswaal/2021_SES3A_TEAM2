@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactHighcharts from 'react-highcharts/ReactHighstock.src'
-import priceData from './assets/btcdata.json'
+import priceData from './assets/tslaData.json'
 import moment from 'moment'
 
 export default class StockPrice extends Component {
@@ -31,7 +31,7 @@ export default class StockPrice extends Component {
         shared: true,
         formatter: function () {
 
-          var unirest = require("unirest");
+          /*var unirest = require("unirest");
 
           var req = unirest("GET", "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-quotes"); //the 'get-quotes' can change depending upon the data you want to receive
 
@@ -49,9 +49,10 @@ export default class StockPrice extends Component {
 
           req.end(function (res) {
             if (res.error) throw new Error(res.error);
-
+            console.log(moment());
             console.log(res.body); //still need to figure out how to extract the data I need and put it in the format which fits the table
-          });
+          });*/
+
 
           return numberFormat.format(this.y, 0) +  '</b><br/>' + moment(this.x).format('MMMM Do YYYY, h:mm')
         }
