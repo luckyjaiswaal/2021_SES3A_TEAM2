@@ -5,6 +5,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 // import { Link, Redirect } from 'react-router-dom';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import axios from './components/utils/axios';
 
 // const handleChange = (event) => {
 //   setState({ ...state, [event.target.name]: event.target.checked });
@@ -21,6 +22,12 @@ const rows = [
   createData('Facebook', '$450 ↑ 10 10', '77/100', '640/230','700/205'),
 ];
 
+async function axiostest(){
+  axios.get('/api/getjson').then((res)=>{
+    console.log(res)
+  })
+}
+
 // const priceStyle = {color : setColorStyle(price)};
 // const sentimentStyle = {color : setColorStyle(score)};
 
@@ -35,8 +42,20 @@ function setColorStyle(text) {
 }
 
 export class Watchlist extends Component {
-
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      price: '' ,
+      sms: false ,
+      email: false , 
+    };
+  }
+  
   render() {
+    console.log(this.state)
+    // const priceStyle = null
+
     return (
       <>
         <TableContainer component={Paper} className="tablecontainer" style={{width:1200}}>
@@ -53,6 +72,7 @@ export class Watchlist extends Component {
                 </TableHead>
                 <TableBody>
                   {rows.map((row) => (
+                    // {priceStyle = {color : setColorStyle(row.symbol) }},
                     <TableRow key={row.stock}>
                       <TableCell component="th" scope="row">
                         {row.stock}
@@ -70,16 +90,21 @@ export class Watchlist extends Component {
                         {row.week}
                       </TableCell>
                       <TableCell component="th" scope="row">
-                        <TextField id="outlined-basic" label="Set Price" variant="outlined" />
+                        <TextField 
+                        id="outlined-basic" 
+                        label="Set Price" 
+                        variant="outlined" 
+                        value={this.setState.price}
+                        />
                         <br/>
                         <FormControlLabel
-                          value="sms"
+                          value={this.state.sms}
                           control={<Checkbox color="primary" />}
                           label="SMS"
                           labelPlacement="end"
                           />
                         <FormControlLabel
-                          value="email"
+                          value={this.state.email}
                           control={<Checkbox color="primary" />}
                           label="E-mail"
                           labelPlacement="end"
