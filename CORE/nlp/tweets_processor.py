@@ -24,7 +24,7 @@ def check_account_age(data):
     Checks the tweet's author's account age, if younger than 12 months, filter out
     """
     age_threshold = 31104000  # 60 * 60 * 24 * 30 * 12 seconds, 12 months
-    account_creation_date = data['created_at']
+    account_creation_date = data['user_created_at']
     account_age = (datetime.now() - datetime.strptime(account_creation_date, '%Y-%m-%d %H:%M:%S')).total_seconds()
     if account_age < age_threshold:
         return True

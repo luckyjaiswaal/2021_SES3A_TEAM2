@@ -82,6 +82,7 @@ def main():
                     "is_spam": 0
                 }
             elif is_spam:
+                print("#####Spam detected#####")
                 paylod = {
                     "tweet_id": message.value['tweet_id'],
                     "created_at": message.value['created_at'],
@@ -99,7 +100,7 @@ def main():
 
             table_sent.put_item(Item=paylod)
             print(f"Sent sentiment score data to dynamodb {paylod}")
-            print("\n \n ")
+            print("\n \n \n")
             # print(
             #     f"Raw message: {message.value['text']} \nPreprocessed: {processed_tweet} \nVader:{sent_score_vader} \nTextblob:{sent_score_txtblob} \n\n\n")
 
