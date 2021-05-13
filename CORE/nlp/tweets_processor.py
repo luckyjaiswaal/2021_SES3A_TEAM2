@@ -1,3 +1,7 @@
+"""
+Author: Yiming Gu 13047675
+"""
+
 import re
 from datetime import datetime
 

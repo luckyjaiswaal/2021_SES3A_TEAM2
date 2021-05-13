@@ -1,3 +1,8 @@
+"""
+Author: Yiming Gu 13047675
+"""
+
+
 from kafka import KafkaConsumer
 from datetime import timezone
 import json
@@ -7,7 +12,6 @@ from decimal import Decimal
 sys.path.insert(
     1, '/Users/yiming.gu/Desktop/Personal/U/3A fml/2021_SES3A_TEAM2/CORE')
 from nlp import tweets_processor, nlp_twitter
-
 kafka_topic = 'twitter_data_raw'
 
 
@@ -27,7 +31,7 @@ def main():
     kafka_consumer = KafkaConsumer(
         kafka_topic,
         bootstrap_servers=['localhost:9092'],
-        auto_offset_reset='earliest',
+        auto_offset_reset='latest',
         value_deserializer=forgiving_json_deserializer)
     # enable_auto_commit=True,
     # auto_commit_interval_ms=5000,
@@ -53,11 +57,13 @@ def main():
 
             # preprocess tweet for nlp
             tweet = json.loads(json.dumps(message.value))
-            is_spam, spam_category = tweets_processor.twitter_spam_filter(tweet)
+            is_spam, spam_category = tweets_processor.twitter_spam_filter(
+                tweet)
             if not is_spam:
                 processed_tweet = tweets_processor.preprocess_tweet(tweet)
                 # calculate sentiment score
-                sent_score_vader_dict = nlp_twitter.calculate_sentiment_vader(processed_tweet)
+                sent_score_vader_dict = nlp_twitter.calculate_sentiment_vader(
+                    processed_tweet)
                 sent_score_vader = sent_score_vader_dict['compound']
                 # sent_score_vader_str = max(sent_score_vader, key=sent_score_vader.get)
                 # sent_score_vader_int = 0

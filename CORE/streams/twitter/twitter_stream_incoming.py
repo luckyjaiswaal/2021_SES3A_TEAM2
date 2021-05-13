@@ -1,3 +1,8 @@
+"""
+Author: Yiming Gu 13047675
+"""
+
+
 import json
 from datetime import timezone
 from tweepy.streaming import StreamListener
