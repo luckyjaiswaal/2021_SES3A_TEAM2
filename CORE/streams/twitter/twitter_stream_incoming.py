@@ -1,3 +1,8 @@
+"""
+Author: Yiming Gu 13047675
+"""
+
+
 import json
 from datetime import timezone
 from tweepy.streaming import StreamListener
@@ -71,7 +76,7 @@ def main():
     myStream = Stream(auth=auth, listener=stream_listener)
     print(f"Connected to Twitter api :{auth}")
 
-    tracks = ['tsla', 'tesla']
+    tracks = ['tsla', 'tesla', '#tsla', '#tesla', '$tsla', '$tesla']
     myStream.filter(track=tracks)
     print(f"Created stream, listening for: {tracks}")
 

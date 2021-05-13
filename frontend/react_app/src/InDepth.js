@@ -7,11 +7,32 @@ import './indepth.css'
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField} from "@material-ui/core";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField, requirePropFactory} from "@material-ui/core";
+import Papa from 'papaparse';
+
 
 function Indepth({ match }) {
   const [tweets, setTweets] = useState([]);
+  const [timexaxis, settimexaxis] = React.useState([]);
+  const [latestsemyaxis, setlatestsemyaxis] = React.useState([]);
+  const [stockprice,setstockprice] = React.useState([]);
   useEffect(() => {
+    Papa.parse('http://localhost:3000/test.csv', {
+      download: true,
+      complete: data => {
+          let arr1=[]
+          let arr2=[]
+          let arr3=[]
+          for(let i=1;i<data.data.length;i++){
+            arr1.push(data.data[i][0])
+            arr2.push(data.data[i][3])
+            arr3.push(data.data[i][5])
+          }
+          settimexaxis(arr1);
+          setlatestsemyaxis(arr2);
+          setstockprice(arr3);
+      }
+  });
     fetchItem();
     console.log(match);
   }, []);
@@ -29,17 +50,29 @@ function Indepth({ match }) {
     }
 
   const data = {
-    labels: ['1', '2', '3', '4', '5', '6'],
+    labels: timexaxis,
     datasets: [
       {
         label: 'Sample data, fill with real data from API',
-        data: [12, 19, 3, 5, 2, 3],
+        data: stockprice,
         fill: false,
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgba(255, 99, 132, 0.2)',
       },
     ],
   };
+  const seconddata= {
+    labels: timexaxis,
+    datasets: [
+      {
+        label: 'Sample data, fill with real data from API',
+        data: latestsemyaxis,
+        fill: false,
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgba(255, 99, 132, 0.2)',
+      },
+    ],
+  }
 
   const options = {
     scales: {
@@ -61,7 +94,7 @@ function Indepth({ match }) {
             <input type="search" placeholder="Search For Stock" />
           </div>
           <div className="dashboard-btn">
-            <Link to="/dashboard">
+            <Link to="/stocklist">
             <button className="btn">
               
               Dashboard</button>
@@ -106,10 +139,9 @@ function Indepth({ match }) {
             </div>
             <div className="pie">
               <h3>Share Price Chart</h3>
-              <Line data={data} options={options} />
+              <Line data={seconddata} options={options} />
             </div>
           </div>
-
         </div>
       </div>
       {/* <div className="header">
