@@ -17,10 +17,12 @@ from rest_framework import permissions
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 
-#Libraries to help access DB
+# Libraries to help access DB
 import csv
 
 # Register API
+
+
 class RegisterAPI(generics.GenericAPIView):
     serializer_class = RegisterSerializer
 
@@ -28,10 +30,9 @@ class RegisterAPI(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         return Response({
-        "user": UserSerializer(user, context=self.get_serializer_context()).data,
-        "token": AuthToken.objects.create(user)[1]
+            "user": UserSerializer(user, context=self.get_serializer_context()).data,
+            "token": AuthToken.objects.create(user)[1]
         })
-
 
 
 class LoginAPI(KnoxLoginView):
@@ -44,6 +45,7 @@ class LoginAPI(KnoxLoginView):
         login(request, user)
         return super(LoginAPI, self).post(request, format=None)
 
+
 def get_tweets(request):
     # Just reading from a csv file now til I can get this hooked onto the database
     tweets = []
@@ -55,19 +57,58 @@ def get_tweets(request):
 
     tweetObjects = []
     for tweet in tweets:
-        tweetObjects.append(json.dumps(Tweet(tweet[0],tweet[1],tweet[2],tweet[3]).__dict__))
-        tweetObjectArray.append(Tweet(tweet[0],tweet[1],tweet[2],tweet[3]))
+        tweetObjects.append(json.dumps(
+            Tweet(tweet[0], tweet[1], tweet[2], tweet[3]).__dict__))
+        tweetObjectArray.append(Tweet(tweet[0], tweet[1], tweet[2], tweet[3]))
 
     tweetsObject = [{"tweet_id": t.tweet_id, "sentiment_score": t.sentiment_score,
-                 "text": t.text, "user_screen_name": t.user_screen_name}
-                for t in tweetObjectArray]
+                     "text": t.text, "user_screen_name": t.user_screen_name}
+                    for t in tweetObjectArray]
 
     tweetJSON = json.dumps({"tweets": tweetsObject}, indent=3)
     return HttpResponse(tweetJSON)
 
+
+def get_stocks(request):
+    # Testing with dummpy data
+    stocks = []
+    stockObjectArray = []
+    with open('backend/django_app/stock_price_ticker.csv', newline='') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
+        for row in spamreader:
+            stocks.append(row)
+
+    stockObjects = []
+    for stock in stocks:
+        stockObjects.append(json.dumps(
+            Stock(stock[0], stock[1], stock[2], stock[3], stock[4], stock[5], stock[6], stock[7]).__dict__))
+        stockObjectArray.append(Stock(
+            stock[0], stock[1], stock[2], stock[3], stock[4], stock[5], stock[6], stock[7]))
+
+    stocksObject = [{"price_id": s.price_id, "close": s.close,
+                     "date": s.date, "high": s.high, "low": s.low,
+                     "open": s.open, "ticker": s.ticker, "volume": s.volume}
+                    for s in stockObjectArray]
+
+    stockJSON = json.dumps({"stocks": stocksObject}, indent=3)
+    return HttpResponse(stockJSON)
+
+
 class Tweet:
-  def __init__(self, tweet_id, sentiment_score, text, user_screen_name):
-    self.tweet_id = tweet_id
-    self.sentiment_score = sentiment_score
-    self.text = text
-    self.user_screen_name = user_screen_name
+    def __init__(self, tweet_id, sentiment_score, text, user_screen_name):
+        self.tweet_id = tweet_id
+        self.sentiment_score = sentiment_score
+        self.text = text
+        self.user_screen_name = user_screen_name
+
+
+class Stock:
+    def __init__(self, price_id, close, date, high, low, open, ticker, volume):
+        self.price_id = price_id
+        self.close = close
+        self.date = date
+        self.high = high
+        self.low = low
+        self.open = open
+        self.ticker = ticker
+        self.volume = volume
