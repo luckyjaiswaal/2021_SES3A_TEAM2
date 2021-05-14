@@ -19,6 +19,15 @@ from knox.views import LoginView as KnoxLoginView
 
 # Libraries to help access DB
 import csv
+import boto3
+from boto3.dynamodb.types import TypeDeserializer
+
+# To access environment variables
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
+
 
 # Register API
 
@@ -67,6 +76,30 @@ def get_tweets(request):
                     for t in tweetObjectArray]
 
     tweetJSON = json.dumps({"tweets": tweetsObject}, indent=3)
+
+
+    # Lucky's solution
+    session = boto3.Session(
+    aws_access_key_id = os.environ.get('aws_access_key_id'),
+    aws_secret_access_key = os.environ.get('aws_secret_access_key'),
+    region_name="ap-southeast-2"
+    )
+    # Table Name
+    table_name = 'twitter_sentiment'
+
+    # dynamodb client
+    dynamodb_client = session.client('dynamodb')
+
+    if __name__ == "sentiment_analysis.views":
+    # get item
+        resp = dynamodb_client.scan(TableName = table_name)
+        items = resp.get("Items")
+        deserialisedItems = []
+        for item in items:
+            if item["is_spam"]['N'] == '0':
+                deserialisedItems.append({k: [v2 for k2, v2 in v.items()][0] for k, v in item.items()})
+        return HttpResponse(json.dumps(deserialisedItems[0:100]))
+
     return HttpResponse(tweetJSON)
 
 

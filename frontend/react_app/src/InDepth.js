@@ -45,7 +45,7 @@ function Indepth({ match }) {
       );
       const item = await fetchItem.json();
       console.log(item);
-      setTweets(item.tweets);
+      setTweets(item);
       console.log(tweets);
     }
 
@@ -115,7 +115,7 @@ function Indepth({ match }) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {tweets.slice(1, tweets.length).map((tweet) => (
+                  {tweets.map((tweet) => (
                     <TableRow key={tweet.tweet_id}>
                       <TableCell component="th" scope="row">
                         {tweet.sentiment_score}

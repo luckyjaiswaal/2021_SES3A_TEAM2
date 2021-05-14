@@ -1,2 +1,3 @@
 .vscode
 localPythonEnv
+backend/django_app/sentiment_analysis/.env
