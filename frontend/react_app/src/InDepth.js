@@ -41,8 +41,11 @@ function Indepth({ match }) {
     const fetchItem = await fetch(
       `http://127.0.0.1:8000/api/sentiment_analysis/get_tweets/`
     );
-    const item = await fetchItem.json();
-    setTweets(item);
+    const tweets = await fetchItem.json();
+    tweets.sort(function(a, b) {
+      return b.created_at - a.created_at;
+    });
+    setTweets(tweets.slice(0, 25));
     console.log(tweets);
   }
 
@@ -131,13 +134,15 @@ function Indepth({ match }) {
         <h1>In depth anaylsis of {stockSymbol}</h1>
         <div className="section">
           <div className="time">
-            <TableContainer component={Paper} className="tablecontainer" style={{ width: 600 }}>
+            <h2>Latest Related Tweets</h2>
+            <TableContainer component={Paper} className="tablecontainer" style={{ width: 750 }}>
               <Table className="table" aria-label="simple table">
                 <TableHead>
                   <TableRow style={{ backgroundColor: '#363538' }}>
                     <TableCell style={{ color: '#F6F6F6' }}>Sentiment Score</TableCell>
                     <TableCell style={{ color: '#F6F6F6' }}>Text</TableCell>
                     <TableCell style={{ color: '#F6F6F6' }}>User Screen Name</TableCell>
+                    <TableCell style={{ color: '#F6F6F6' }}>Date Posted</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -151,6 +156,9 @@ function Indepth({ match }) {
                       </TableCell>
                       <TableCell component="th" scope="row">
                         {tweet.user_screen_name}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {convertUnixTime(tweet.created_at)}
                       </TableCell>
                     </TableRow>
                   ))}
