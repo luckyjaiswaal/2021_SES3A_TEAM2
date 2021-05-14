@@ -57,27 +57,6 @@ class LoginAPI(KnoxLoginView):
 
 
 def get_tweets(request):
-    # Just reading from a csv file now til I can get this hooked onto the database
-    tweets = []
-    tweetObjectArray = []
-    with open('twitter_sentiment.csv', newline='') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
-        for row in spamreader:
-            tweets.append(row)
-
-    tweetObjects = []
-    for tweet in tweets:
-        tweetObjects.append(json.dumps(
-            Tweet(tweet[0], tweet[1], tweet[2], tweet[3]).__dict__))
-        tweetObjectArray.append(Tweet(tweet[0], tweet[1], tweet[2], tweet[3]))
-
-    tweetsObject = [{"tweet_id": t.tweet_id, "sentiment_score": t.sentiment_score,
-                     "text": t.text, "user_screen_name": t.user_screen_name}
-                    for t in tweetObjectArray]
-
-    tweetJSON = json.dumps({"tweets": tweetsObject}, indent=3)
-
-
     # Lucky's solution
     session = boto3.Session(
     aws_access_key_id = os.environ.get('aws_access_key_id'),
@@ -98,7 +77,7 @@ def get_tweets(request):
         for item in items:
             if item["is_spam"]['N'] == '0':
                 deserialisedItems.append({k: [v2 for k2, v2 in v.items()][0] for k, v in item.items()})
-        return HttpResponse(json.dumps(deserialisedItems[0:100]))
+        return HttpResponse(json.dumps(deserialisedItems))
 
     return HttpResponse(tweetJSON)
 
