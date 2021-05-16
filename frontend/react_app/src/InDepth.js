@@ -13,6 +13,7 @@ function Indepth({ match }) {
   const [timexaxis, settimexaxis] = React.useState([]);
   const [latestsemyaxis, setlatestsemyaxis] = React.useState([]);
   const [sharePrices, setSharePrices] = React.useState([]);
+  const [sentimentScores, setSentimentScores] = React.useState([]);
 
   useEffect(() => {
     Papa.parse('http://localhost:3000/test.csv', {
@@ -32,6 +33,7 @@ function Indepth({ match }) {
     });
     fetchTweets();
     fetchStockPrice();
+    fetchSentiment();
     console.log(match);
   }, []);
 
@@ -68,6 +70,25 @@ function Indepth({ match }) {
     console.log(stockPriceData);
   }
 
+  const fetchSentiment = async () => {
+    const fetchItem = await fetch(
+      `http://127.0.0.1:8000/api/sentiment_analysis/get_sentiment/`
+    );
+    const data = await fetchItem.json();
+    var sentimentScores = []
+    data.sort(function(a, b) {
+      return a.timestamp-b.timestamp;
+    });
+    data.forEach(sentimentData => {
+      sentimentScores.push({
+        x: convertUnixTime(sentimentData.timestamp),
+        y: sentimentData.sentiment
+      })
+    })
+    setSentimentScores(sentimentScores);
+    console.log(sentimentScores);
+  }
+
   const convertUnixTime = (timestamp) => {
     var d = new Date(timestamp*1000);
     var timeStampCon = d.getDate() + '-' + (d.getMonth()) + '-' + d.getFullYear();
@@ -75,12 +96,12 @@ function Indepth({ match }) {
     return timeStampCon;
   }
 
-  const data = {
+  const sentimentGraphdata = {
     labels: timexaxis,
     datasets: [
       {
-        label: 'Sample data, fill with real data from API',
-        data: latestsemyaxis,
+        label: 'Sentiment Score',
+        data: sentimentScores,
         fill: false,
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgba(255, 99, 132, 0.2)',
@@ -100,13 +121,28 @@ function Indepth({ match }) {
     ],
   }
 
-  const options = {
+  const sharePriceGraphOptions = {
     scales: {
       y:
         {
           title: {
             display: true,
             text: 'Price (US dollars)'
+          },
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+    },
+  };
+
+  const sentimentScoreGraphOptions = {
+    scales: {
+      y:
+        {
+          title: {
+            display: true,
+            text: 'Sentiment Score'
           },
           ticks: {
             beginAtZero: true,
@@ -169,11 +205,11 @@ function Indepth({ match }) {
           <div className="chart">
             <div className="sentiment">
               <h3>Sentiment Score Chart</h3>
-              <Line data={data} options={options} />
+              <Line data={sentimentGraphdata} options={sentimentScoreGraphOptions} />
             </div>
             <div className="pie">
               <h3>Share Price Chart</h3>
-              <Line data={sharePricedata} options={options} />
+              <Line data={sharePricedata} options={sharePriceGraphOptions} />
             </div>
           </div>
         </div>

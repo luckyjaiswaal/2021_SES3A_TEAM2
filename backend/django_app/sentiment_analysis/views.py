@@ -79,8 +79,6 @@ def get_tweets(request):
                 deserialisedItems.append({k: [v2 for k2, v2 in v.items()][0] for k, v in item.items()})
         return HttpResponse(json.dumps(deserialisedItems))
 
-    return HttpResponse(tweetJSON)
-
 def get_stocks(request):
     session = boto3.Session(
     aws_access_key_id = os.environ.get('aws_access_key_id'),
@@ -89,6 +87,27 @@ def get_stocks(request):
     )
     # Table Name
     table_name = 'stock_price_ticker'
+
+    # dynamodb client
+    dynamodb_client = session.client('dynamodb')
+
+    if __name__ == "sentiment_analysis.views":
+    # get item
+        resp = dynamodb_client.scan(TableName = table_name)
+        items = resp.get("Items")
+        deserialisedItems = []
+        for item in items:
+            deserialisedItems.append({k: [v2 for k2, v2 in v.items()][0] for k, v in item.items()})
+        return HttpResponse(json.dumps(deserialisedItems))
+
+def get_sentiment(request):
+    session = boto3.Session(
+    aws_access_key_id = os.environ.get('aws_access_key_id'),
+    aws_secret_access_key = os.environ.get('aws_secret_access_key'),
+    region_name="ap-southeast-2"
+    )
+    # Table Name
+    table_name = 'sentiment_stock'
 
     # dynamodb client
     dynamodb_client = session.client('dynamodb')
