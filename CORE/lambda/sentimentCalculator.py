@@ -16,12 +16,12 @@ def lambda_handler(event, context):
    table = client.Table('twitter_sentiment')
 
    response = table.scan(
-    FilterExpression= Attr('sentiment_score').lt(1) & Attr('is_spam').lt(1) & Attr('created_at').gt(timeCheck)
+    FilterExpression= Attr('sentiment_score').lt(1) & Attr('is_spam').lt(1)  & Attr('sentiment_score').lt(1)
    )
 
    data = response['Items']
    while 'LastEvaluatedKey' in response:
-    response = table.scan(ExclusiveStartKey=response['LastEvaluatedKey'],  FilterExpression= Attr('sentiment_score').lt(1) & Attr('is_spam').lt(1) & Attr('created_at').gt(timeCheck))
+    response = table.scan(ExclusiveStartKey=response['LastEvaluatedKey'],  FilterExpression= Attr('sentiment_score').lt(1) & Attr('is_spam').lt(1)  & Attr('sentiment_score').lt(1)
     data.extend(response['Items'])
    avgSentiment = 0
    count = 0
