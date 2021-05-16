@@ -35,7 +35,7 @@ function App() {
           {/* <Newsfeed/> */}
       </Router>
     </Grid>
-    <button onClick={axiostest}>testaxios</button>
+    {/* <button onClick={axiostest}>testaxios</button> */}
     </>
   );
 }
