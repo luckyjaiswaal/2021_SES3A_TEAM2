@@ -65,7 +65,11 @@ export default class NavBar extends Component {
               <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px', width: '250px' }}>Profile</NavButton>
             </Link>
             <Link to="/" style={{ textDecoration: 'none' }}>
-              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px', width: '250px' }} onClick={()=>store.dispatch({type: "logout"})}>Logout {store.getState()}</NavButton>
+              <NavButton className="btn" disableRipple style={{ fontFamily: 'Verdana', fontSize: '21px', width: '250px' }} 
+              onClick={()=>store.dispatch({type: "Logout"})}
+              > Login
+              {/* {store.getState()} */}
+              </NavButton>
             </Link>
             </Box>
                     &nbsp;
