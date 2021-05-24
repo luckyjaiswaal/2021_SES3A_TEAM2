@@ -47,7 +47,7 @@ function Indepth({ match }) {
     tweets.sort(function(a, b) {
       return b.created_at - a.created_at;
     });
-    setTweets(tweets.slice(0, 25));
+    setTweets(tweets.slice(0, 100));
     console.log(tweets);
   }
 
@@ -82,7 +82,7 @@ function Indepth({ match }) {
     data.forEach(sentimentData => {
       sentimentScores.push({
         x: convertUnixTime(sentimentData.timestamp),
-        y: sentimentData.sentiment
+        y: sentimentData.sentiment * 1000
       })
     })
     setSentimentScores(sentimentScores);
@@ -91,7 +91,7 @@ function Indepth({ match }) {
 
   const convertUnixTime = (timestamp) => {
     var d = new Date(timestamp*1000);
-    var timeStampCon = d.getDate() + '-' + (d.getMonth()) + '-' + d.getFullYear();
+    var timeStampCon = d.getDate() + '-' + (d.getMonth()+1) + '-' + d.getFullYear();
 
     return timeStampCon;
   }
@@ -100,11 +100,20 @@ function Indepth({ match }) {
     labels: timexaxis,
     datasets: [
       {
-        label: 'Sentiment Score',
-        data: sentimentScores,
+        label: 'TSLA price',
+        data: sharePrices,
         fill: false,
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgba(255, 99, 132, 0.2)',
+        color: '#666'
+      },
+      {
+        type: 'bar',
+        label: 'Sentiment Score',
+        data: sentimentScores,
+        fill: false,
+        backgroundColor: 'rgb(0, 255, 0)',
+        borderColor: 'rgba(0, 255, 0, 0.2)',
       },
     ],
   };
@@ -161,17 +170,25 @@ function Indepth({ match }) {
           <div className="dashboard-btn">
             <Link to="/stocklist">
               <button className="btn">
-
                 Dashboard</button>
             </Link>
 
           </div>
         </div>
         <h1>In depth anaylsis of {stockSymbol}</h1>
-        <div className="section">
-          <div className="time">
+          <div>
+            <div>
+              <h3>Sentiment Score Chart</h3>
+              <Line data={sentimentGraphdata} options={sentimentScoreGraphOptions} />
+            </div>
+            {/* <div>
+              <h3>Share Price Chart</h3>
+              <Line data={sharePricedata} options={sharePriceGraphOptions} />
+            </div> */}
+        <div>
+          <div>
             <h2>Latest Related Tweets</h2>
-            <TableContainer component={Paper} className="tablecontainer" style={{ width: 750 }}>
+            <TableContainer component={Paper}>
               <Table className="table" aria-label="simple table">
                 <TableHead>
                   <TableRow style={{ backgroundColor: '#363538' }}>
@@ -202,15 +219,6 @@ function Indepth({ match }) {
               </Table>
             </TableContainer>
           </div>
-          <div className="chart">
-            <div className="sentiment">
-              <h3>Sentiment Score Chart</h3>
-              <Line data={sentimentGraphdata} options={sentimentScoreGraphOptions} />
-            </div>
-            <div className="pie">
-              <h3>Share Price Chart</h3>
-              <Line data={sharePricedata} options={sharePriceGraphOptions} />
-            </div>
           </div>
         </div>
       </div>
