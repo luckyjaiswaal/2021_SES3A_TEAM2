@@ -1,0 +1,62 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.content {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.box-1 {
+  border: 2px solid black;
+  min-height: 150px;
+  min-width: 500px;
+  margin:10px;
+  text-align: center;
+}
+.dashboard{
+  border: 2px solid black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 200px;
+}
+.containers{
+  width: 70%;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.heading{
+  position: relative;
+  left: 18%;
+}
+.b{
+  color: white;
+  text-decoration: none;
+}
+.box-2{
+  font-size: 20px;
+    height: 90px;
+    /* height: fit-content; */
+    border: 2px solid black;
+    padding: 25px;
+    width: 230px;
+    text-align: center;
+    position: relative;
+    background-color: grey;
+    top: 27px;
+}
