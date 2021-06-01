@@ -18,3 +18,44 @@ https://doi.org/10.1016/j.procs.2018.05.111.
 
 
 Tweepy info: https://www.researchgate.net/post/How-can-I-collect-data-from-Twitter-for-stock-market-analysis-sentiment-analysis
+
+
+Using the API's tickers endpoint you will be able to look up information about one or multiple stock ticker symbols as well as obtain end-of-day, real-time and intraday market data for single tickers. You will be able to find and try out an example API request below.
+
+Example API Request:
+
+Sign Up to Run API Requesthttps://api.marketstack.com/v1/tickers
+    ? access_key = YOUR_ACCESS_KEY
+    
+    /tickers/[symbol]	Obtain information about a specific ticker symbol by attach it to your API request URL, e.g. /tickers/AAPL.
+    
+    API Response:
+
+{
+    "pagination": {
+        "limit": 1,
+        "offset": 0,
+        "count": 1,
+        "total": 7561
+    },
+    "data": [
+        {
+            "date": "2020-08-21T00:00:00+0000",
+            "symbol": "DJI.INDX",
+            "exchange": "INDX",
+            "open": 27758.1309,
+            "high": 27959.4805,
+            "low": 27686.7793,
+            "close": 27930.3301,
+            "volume": 374339179,
+            "adj_high": null,
+            "adj_low": null,
+            "adj_close": 27930.3301,
+            "adj_open": null,
+            "adj_volume": null
+        }
+    ]
+}
+
+/intraday/[date]	Specify a date in YYYY-MM-DD format. You can also specify an exact time in ISO-8601 date format, e.g. 2020-05-21T00:00:00+0000. Example: /intraday/2020-01-01
+/intraday/latest	Obtain the latest available intraday data for one or multiple stock tickers.
